@@ -1,3 +1,6 @@
+<img src="resa.png"
+     alt="ResaHotel"
+     style="width:auto;height:auto;" />
 # ResaHotel
 <em>Gestion Hotel</em>
  
