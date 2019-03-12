@@ -10,8 +10,9 @@ On voudrait écrire un petit système de réservation pour cet hôtel pour une d
 - La gestion des réservations :  
     o  Chercher des chambres disponibles pour une période donnée  
     o  Ajouter une réservation  o  Annuler une réservation 
+
 - La gestion des séjours :
-    o Créer un séjour 
+    o Créer un séjour
     o Ajouter des consommations mini bar 
     o Facturation 
  
