@@ -19,3 +19,15 @@ On voudrait écrire un petit système de réservation pour cet hôtel pour une d
     o Ajouter des consommations mini bar </br>
     o Facturation</br>
  
+<h2>Conception Gestion Hôtel</h2>
+ 
+<h4><i>Diagram Class</i></h4>
+<img src="DiagramAS.png"
+     alt="ResaHotel"
+     style="width:auto;height:auto;" />
+     
+     
+<h4><i>Diagram Data</i></h4>
+<img src="Diagram Data.png"
+     alt="ResaHotel"
+     style="width:auto;height:auto;" />
