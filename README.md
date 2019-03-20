@@ -2,7 +2,7 @@
      alt="ResaHotel"
      style="width:auto;height:auto;" />
 # ResaHotel
-<em>Gestion Hotel</em>
+<em>Gestion Hotel </em>
  
 Un hôtel comprend quatre types de chambres : double, simple, suite normale et suite présidentielle codifiées respectivement par D,S,N,P Chaque chambre possède un numéro unique et l’étage. Les clients de l’hôtel peuvent effectuer des réservations. Une réservation est définie par la date de début, date de fin ainsi que le client concerné.  Le client peut soit annuler la réservation soit séjourner. Dans le cas où le client n’annule pas, la réservation donne lieu à un séjour. En plus du coût de la chambre, le client peut consommer durant son séjour des produits au mini bar. 
  
