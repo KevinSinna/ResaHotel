@@ -12,12 +12,13 @@ public class Double extends Chambre {
      * Default constructor
      */
     public Double() {
+    	
     }
 
     /**
      * 
      */
-    private static double prix;
+    private static double prix = 60;
 
 	public static double getPrix() {
 		return prix;
