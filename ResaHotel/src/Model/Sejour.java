@@ -1,10 +1,12 @@
+package model;
+
 
 import java.util.*;
 
 /**
  * 
  */
-public class Sejour extends Réservation {
+public class Sejour extends Reservation {
 
     /**
      * Default constructor
@@ -15,21 +17,18 @@ public class Sejour extends Réservation {
     /**
      * 
      */
-    private Produit TabConso;
-
+    private Set<Produit> TabConso;
 
 
     /**
      * 
      */
-    private Set<Réservation> TabChambre;
+    private Set<Reservation> TabChambre;
 
     /**
-     * @param Produit TabConso 
-     * @param Chambre TabChambre 
-     * @param idClient
+     * 
      */
-    public void Facturation(void Produit TabConso, void Chambre TabChambre, void idClient) {
+    public void Facturation() {
         // TODO implement here
     }
 

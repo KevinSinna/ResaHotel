@@ -1,3 +1,5 @@
+package model;
+
 
 import java.util.*;
 
@@ -12,15 +14,6 @@ public class Hotel {
     public Hotel() {
     }
 
-    /**
-     * 
-     */
-    private Chambre TabCh;
-
-    /**
-     * 
-     */
-    private Réservation TabRes;
 
 
 

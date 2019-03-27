@@ -1,21 +1,22 @@
+package model;
 
 import java.util.*;
 
 /**
  * 
  */
-public class Réservation {
+public class Reservation {
 
     /**
      * Default constructor
      */
-    public Réservation() {
+    public Reservation() {
     }
 
     /**
      * 
      */
-    private Chambre TabChambre;
+
 
     /**
      * 
@@ -38,12 +39,13 @@ public class Réservation {
      */
     private Client idClient;
 
-
+    private Date DateDeb;
+    private Date DateFin;
 
     /**
      * @param int idR
      */
-    public void Annul(void int idR) {
+    public void Annul() {
         // TODO implement here
     }
 
