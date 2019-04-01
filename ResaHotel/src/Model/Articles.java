@@ -19,4 +19,13 @@ public class Articles extends Produit {
      */
     private int nbProd;
 
+	public int getNbProd() {
+		return nbProd;
+	}
+
+	public void setNbProd(int nbProd) {
+		this.nbProd = nbProd;
+	}
+
+    
 }

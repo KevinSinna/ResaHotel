@@ -17,9 +17,7 @@ public class Chambre {
     public Chambre(int e,int num) {
     	etage = e; NumeroCh = num;
     }
-    public Chambre(int g) {
-    	
-    }
+   
     
     public void Ajout() {
     	Connection conn=Connexion.ConnexionBD();
