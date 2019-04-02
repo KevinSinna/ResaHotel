@@ -1,0 +1,46 @@
+#btn{
+	-fx-background-color: #FF8000;
+	-fx-border-radius: 0%;
+	-fx-graphic: url("./open1.png");
+	
+	
+}
+#btn:hover{
+	-fx-background-color: #FF4000;
+	-fx-opacity : 0.8;
+}
+#btn:focus{
+	-fx-background-color: #FF4000;
+
+}
+#btnc{
+	-fx-background-color: #FF8000;
+	-fx-border-radius: 0%;
+	-fx-graphic: url("./chamb.png");
+	
+
+}
+#btnc:hover{
+	-fx-background-color: #FF4000;
+	-fx-opacity : 0.8;
+}
+#btnc:focus{
+	-fx-background-color: #FF4000;
+
+}
+#btnr{
+	-fx-background-color: #FF8000;
+	-fx-border-radius: 0%;
+	-fx-graphic: url("./key.png");
+	
+	
+}
+#btnr:hover{
+	-fx-background-color: #FF4000;
+	-fx-opacity : 0.8;
+}
+#btnr:focus{
+	-fx-background-color: #FF4000;
+
+}
+

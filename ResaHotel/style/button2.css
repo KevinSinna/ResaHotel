@@ -1,0 +1,24 @@
+#btnclient{
+	-fx-background-color: #FF8000;
+	-fx-border-radius: 0%;
+	-fx-graphic: url("./profil.png");
+	-fx-font-weight:bold; 
+	
+}
+#btnclient:hover{
+	-fx-background-color: #FF4000;
+	-fx-opacity : 0.8;
+}
+
+#btnf:hover{
+	-fx-background-color: #FF4000;
+	-fx-opacity : 0.8;
+}
+
+#btnf{
+	-fx-background-color: #FF8000;
+	-fx-border-radius: 0%;
+	-fx-graphic: url("./euro.png");
+	
+	
+}
