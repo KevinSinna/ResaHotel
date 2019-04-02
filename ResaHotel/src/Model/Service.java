@@ -1,7 +1,7 @@
 package model;
 
 
-import java.util.*;
+
 
 /**
  * 
@@ -14,7 +14,15 @@ public class Service extends Produit {
     public Service() {
     }
 
-    /**
+    public int getNbServ() {
+		return nbServ;
+	}
+
+	public void setNbServ(int nbServ) {
+		this.nbServ = nbServ;
+	}
+
+	/**
      * 
      */
     private int nbServ;

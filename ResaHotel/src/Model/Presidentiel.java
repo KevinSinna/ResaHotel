@@ -16,22 +16,10 @@ public class Presidentiel extends Chambre {
 		return prix;
 	}
 
-	public static void setPrix(double prix) {
-		Presidentiel.prix = prix;
-	}
-
-	public static String getTypech() {
-		return typech;
-	}
-
-	public static void setTypech(String typech) {
-		Presidentiel.typech = typech;
-	}
-
 	/**
      * 
      */
     private static double prix;
-    private static String typech = "P";
+    final String typech = "P";
 
 }

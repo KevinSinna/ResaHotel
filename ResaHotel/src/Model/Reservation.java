@@ -16,7 +16,7 @@ public class Reservation {
     /**
      * 
      */
-
+    
 
     /**
      * 
@@ -32,7 +32,6 @@ public class Reservation {
     /**
      * 
      */
-    private Set<Chambre> TabChambre;
 
     /**
      * 
@@ -41,7 +40,7 @@ public class Reservation {
 
     private Date DateDeb;
     private Date DateFin;
-
+    public Chambre Chamb;
     /**
      * @param int idR
      */
