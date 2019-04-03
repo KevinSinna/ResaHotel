@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class PageChambre {
@@ -74,18 +75,10 @@ public class PageChambre {
     @FXML
     void AjoutChambre(ActionEvent event) throws IOException {
     	Stage windaj = new Stage();
-    	Parent root = null;
-    	windaj=(Stage) btnAccueil.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("/View/accueil.fxml"));
-        Scene accueil = new Scene(root);
- 	   windaj.setScene(accueil);
- windaj.show();
-    	
-    	
-    	
-    	
-    	
-    	
+    	root = FXMLLoader.load(getClass().getResource("/View/formchambre.fxml"));
+    	Scene form = new Scene(root);
+    	windaj.setScene(form);
+    	windaj.show(); 	
     }
 }
 
