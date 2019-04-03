@@ -13,7 +13,8 @@ import javafx.stage.Stage;
 public class PageChambre {
 	Stage stage; 
 	Parent root;
-
+	@FXML
+    private Button btnAjout;
     @FXML
     private Button btnAccueil;
 
@@ -70,4 +71,22 @@ public class PageChambre {
     	stage.show();
     	}
     	}
+    @FXML
+    void AjoutChambre(ActionEvent event) throws IOException {
+    	Stage windaj = new Stage();
+    	Parent root = null;
+    	windaj=(Stage) btnAccueil.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("/View/accueil.fxml"));
+        Scene accueil = new Scene(root);
+ 	   windaj.setScene(accueil);
+ windaj.show();
+    	
+    	
+    	
+    	
+    	
+    	
+    }
 }
+
+

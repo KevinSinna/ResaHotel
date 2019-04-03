@@ -56,10 +56,10 @@
             </Pane>
             <TableView fx:id="tabChamb" layoutX="170.0" layoutY="44.0" prefHeight="277.0" prefWidth="491.0">
               <columns>
-                <TableColumn prefWidth="112.66664123535156" text="Numero" />
-                <TableColumn prefWidth="135.33331298828125" text="Etage" />
-                  <TableColumn prefWidth="125.33328247070312" text="Type" />
-                  <TableColumn prefWidth="118.66668701171875" text="Prix" />
+                <TableColumn fx:id="colNum" prefWidth="112.66664123535156" text="Numero" />
+                <TableColumn fx:id="colEtage" prefWidth="135.33331298828125" text="Etage" />
+                  <TableColumn fx:id="colType" prefWidth="125.33328247070312" text="Type" />
+                  <TableColumn fx:id="colPrix" prefWidth="118.66668701171875" text="Prix" />
               </columns>
             </TableView>
             <Button layoutX="209.0" layoutY="349.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #f94e4e;" text="Suprimer" textFill="WHITE">
@@ -72,7 +72,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="521.0" layoutY="349.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #ff8000;" text="Ajoute" textFill="WHITE">
+            <Button fx:id="btnAjout" layoutX="521.0" layoutY="349.0" mnemonicParsing="false" onAction="#AjoutChambre" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #ff8000;" text="Ajoute" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
