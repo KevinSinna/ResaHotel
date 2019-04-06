@@ -6,6 +6,12 @@ import java.util.*;
  * 
  */
 public class Reservation {
+	private Client idClient;
+    private Date DateDeb;
+    private Date DateFin;
+    public ArrayList<Chambre> Chamb;
+    private int idRes;
+    private String Statut;
 
     /**
      * Default constructor
@@ -13,37 +19,7 @@ public class Reservation {
     public Reservation() {
     }
 
-    /**
-     * 
-     */
-    
 
-    /**
-     * 
-     */
-    private int idRes;
-
-    /**
-     * 
-     */
-    private String Statut;
-
-
-    /**
-     * 
-     */
-
-    /**
-     * 
-     */
-    private Client idClient;
-
-    private Date DateDeb;
-    private Date DateFin;
-    public Chambre Chamb;
-    /**
-     * @param int idR
-     */
     public void Annul() {
         // TODO implement here
     }

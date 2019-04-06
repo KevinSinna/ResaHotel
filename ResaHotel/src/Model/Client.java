@@ -13,7 +13,9 @@ import dao.Connexion;
  * 
  */
 public class Client {
-
+    private int idClient;
+    private String nom;
+    private String prenom;
     /**
      * Default constructor
      */
@@ -63,16 +65,6 @@ public class Client {
 	/**
      * 
      */
-    private int idClient;
 
-    /**
-     * 
-     */
-    private String nom;
-
-    /**
-     * 
-     */
-    private String prenom;
 
 }

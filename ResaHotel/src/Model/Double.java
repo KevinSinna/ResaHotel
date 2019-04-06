@@ -1,22 +1,22 @@
 package model;
 
+
+
 /**
  * 
  */
 public class Double extends Chambre {
-
-    /**
-     * Default constructor
-     */
-    public Double(int e,int num) {
-    	super(e,num); 	
+	private static double prix = 60;
+    final String typech = "D";
+    ////////////////////////////
+   
+    public Double(int etag,int num) {
+    	super(etag,num); 	
     }
+    
 
-    /**
-     * 
-     */
-    private static double prix = 60;
-    private static String typech = "D";
+    
+    /////GET SET PRIX ///////////
 	public static double getPrix() {
 		return prix;
 	}
@@ -24,13 +24,6 @@ public class Double extends Chambre {
 	public static void setPrix(double prix) {
 		Double.prix = prix;
 	}
-
-	public static String getTypech() {
-		return typech;
-	}
-
-	public static void setTypech(String typech) {
-		Double.typech = typech;
-	}
+	////////////////////////////////
     
 }

@@ -20,6 +20,11 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
+                  <Button fx:id="idclose" layoutX="265.0" layoutY="9.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="31.0" style="-fx-background-color: je94e4e;" text="X" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
             <TextField fx:id="idnumero" layoutX="26.0" layoutY="66.0" prefHeight="25.0" prefWidth="95.0" promptText="Numero" />

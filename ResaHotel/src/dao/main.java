@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Chambre;
 
 public class main extends Application {
@@ -25,6 +26,7 @@ public class main extends Application {
 	public void start(Stage arg0) throws Exception {
 		// TODO Auto-generated method stub
 		stage=arg0;
+		//stage.initStyle(StageStyle.UNDECORATED);
 		root = FXMLLoader.load(getClass().getResource("/View/accueil.fxml"));
 		Scene scene = new Scene(root);
         stage.setScene(scene);

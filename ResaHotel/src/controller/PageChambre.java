@@ -10,9 +10,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class PageChambre {
 	Stage stage; 
+	
 	Parent root;
 	@FXML
     private Button btnAjout;
@@ -75,11 +77,13 @@ public class PageChambre {
     @FXML
     void AjoutChambre(ActionEvent event) throws IOException {
     	Stage windaj = new Stage();
+    	windaj.initStyle(StageStyle.UNDECORATED);
     	root = FXMLLoader.load(getClass().getResource("/View/formchambre.fxml"));
     	Scene form = new Scene(root);
     	windaj.setScene(form);
     	windaj.show(); 	
     }
+    
 }
 
 

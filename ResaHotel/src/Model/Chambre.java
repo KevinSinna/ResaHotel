@@ -2,8 +2,6 @@ package model;
 
 
 import java.sql.Connection;
-import java.util.ArrayList;
-
 import com.mysql.jdbc.PreparedStatement;
 
 import dao.Connexion;
@@ -20,12 +18,14 @@ public class Chambre {
     	etage = e; NumeroCh = num;
     }
    
-    
-    public void Ajout() {
+    //////////////// AJOUT BSD ////////////////////
+    public void Ajout(double prix, String type) {
     	Connection conn=Connexion.ConnexionBD();
-		try {PreparedStatement ps=(PreparedStatement) conn.prepareStatement("insert into Chambre (etage,numero) values (?,?)");
+		try {PreparedStatement ps=(PreparedStatement) conn.prepareStatement("insert into Chambre (etage,numero,prix,type) values (?,?,?,?)");
 		ps.setInt(1, this.etage);
 		ps.setInt(2,this.NumeroCh);
+		ps.setDouble(3,prix);
+		ps.setString(4,type);
 		ps.executeUpdate();
 		ps.close();
 
@@ -33,6 +33,7 @@ public class Chambre {
 		System.out.println("error insert to Chambre");
 		e.printStackTrace();}
     }
+    /////////////////////////////////////////////// 
     public void ModifType(String typ) {
     	double nprix = 0;
     	switch (typ) {
@@ -62,31 +63,17 @@ public class Chambre {
     /**
      * 
      */
-    private int NumeroCh;
-    public ArrayList<Reservation> TabRes;
+    protected int NumeroCh;
+    //public ArrayList<Reservation> TabRes;
     
 
-	public int getNumeroCh() {
-		return NumeroCh;
-	}
-
-	public void setNumeroCh(int numeroCh) {
-		NumeroCh = numeroCh;
-	}
 
 	/**
      * 
      */
-    private int etage;
+    protected int etage;
     
-    public int getEtage() {
-  		return etage;
-  	}
-
-  	public void setEtage(int etage) {
-  		this.etage = etage;
-  	}
-
+   
 
 
 }

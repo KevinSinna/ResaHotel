@@ -1,7 +1,10 @@
 package model;
 
+import java.sql.Connection;
 
+import com.mysql.jdbc.PreparedStatement;
 
+import dao.Connexion;
 
 /**
  * 
@@ -12,32 +15,24 @@ public class Produit {
      * Default constructor
      */
     public Produit() {
+
     }
 
-    public double getPrix() {
-		return prix;
-	}
+    /////////// Ajout BSD ////////////////
+    public void Ajout(String type,double prix) {
+    	Connection conn=Connexion.ConnexionBD();
+		try {PreparedStatement ps=(PreparedStatement) conn.prepareStatement("insert into Chambre (type,prix) values (?,?)");
+		ps.setString(1, type);
+		ps.setDouble(2,prix);
+		ps.executeUpdate();
+		ps.close();
 
-	public void setPrix(double prix) {
-		this.prix = prix;
-	}
-
-	public String getNomProd() {
-		return nomProd;
-	}
-
-	public void setNomProd(String nomProd) {
-		this.nomProd = nomProd;
-	}
-
-	/**
-     * 
-     */
-    private double prix;
-
-    /**
-     * 
-     */
-    private String nomProd;
+		} catch (Exception e) {
+		System.out.println("error insert to Chambre");
+		e.printStackTrace();}
+    }
+//////////////////////////////////////
+	
+    
 
 }

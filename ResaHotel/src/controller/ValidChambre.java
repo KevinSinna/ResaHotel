@@ -24,7 +24,10 @@ public class ValidChambre {
 
     @FXML
     private Button btnValid;
-
+    
+    @FXML
+    private Button idclose;
+    
     @FXML
     void ValideChambre(ActionEvent event) {
     	if(idetage==null) {
@@ -38,5 +41,10 @@ public class ValidChambre {
     void initializebox() {
     	idTypebox.setItems(typeItems);
     	System.out.println("initialisé box");
+    }
+    @FXML
+    void close(ActionEvent event) {
+    	stage=(Stage) idclose.getScene().getWindow();   	
+    	stage.close(); 
     }
     }
