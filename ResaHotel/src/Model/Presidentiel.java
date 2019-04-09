@@ -6,8 +6,8 @@ package model;
  * 
  */
 public class Presidentiel extends Chambre {
-	 private static double prix;
-	 final String typech = "P";
+	 private static double prix = 90;
+	 final private String typech = "P";
     /**
      * Default constructor
      */
@@ -17,6 +17,10 @@ public class Presidentiel extends Chambre {
    
     public static double getPrix() {
 		return prix;
+	}
+
+	public String getTypech() {
+		return typech;
 	}
 
 	/**

@@ -18,7 +18,11 @@ public class Chambre {
     	etage = e; NumeroCh = num;
     }
    
-    //////////////// AJOUT BSD ////////////////////
+    public Chambre() {
+		// TODO Auto-generated constructor stub
+	}
+
+	//////////////// AJOUT BSD ////////////////////
     public void Ajout(double prix, String type) {
     	Connection conn=Connexion.ConnexionBD();
 		try {PreparedStatement ps=(PreparedStatement) conn.prepareStatement("insert into Chambre (etage,numero,prix,type) values (?,?,?,?)");
@@ -48,8 +52,7 @@ public class Chambre {
     	}
     	Connection conn1=Connexion.ConnexionBD();
 		try {PreparedStatement ps=(PreparedStatement) conn1.prepareStatement(
-				"UPDATE `Chambre` SET `type`='"+typ+"',`prix`='"+nprix+"' WHERE etage='"+this.NumeroCh+"'");
-	
+				"UPDATE `Chambre` SET `type`='"+typ+"',`prix`='"+nprix+"' WHERE etage='"+this.NumeroCh+"'");	
 		ps.executeUpdate();
 		ps.close();
 
@@ -63,7 +66,7 @@ public class Chambre {
     /**
      * 
      */
-    protected int NumeroCh;
+    private int NumeroCh;
     //public ArrayList<Reservation> TabRes;
     
 
@@ -71,7 +74,27 @@ public class Chambre {
 	/**
      * 
      */
-    protected int etage;
+    private int etage;
+    private double prix;
+    private String type;
+
+
+
+	public int getNumeroCh() {
+		return NumeroCh;
+	}
+
+	public void setNumeroCh(int numeroCh) {
+		NumeroCh = numeroCh;
+	}
+
+	public int getEtage() {
+		return etage;
+	}
+
+	public void setEtage(int etage) {
+		this.etage = etage;
+	}
     
    
 

@@ -16,7 +16,12 @@ public class Simple extends Chambre {
     }
 
 
-    public static double getPrix() {
+    public Simple() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public static double getPrix() {
 		return prix;
 	}
 
