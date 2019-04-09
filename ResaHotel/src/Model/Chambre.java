@@ -75,8 +75,6 @@ public class Chambre {
      * 
      */
     private int etage;
-    private double prix;
-    private String type;
 
 
 

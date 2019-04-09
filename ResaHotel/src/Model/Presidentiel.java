@@ -7,7 +7,7 @@ package model;
  */
 public class Presidentiel extends Chambre {
 	 private static double prix = 90;
-	 final private String typech = "P";
+	 final private String typech = "Presidentiel";
     /**
      * Default constructor
      */

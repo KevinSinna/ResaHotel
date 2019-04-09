@@ -18,11 +18,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Chambre;
@@ -41,6 +42,9 @@ public class PageChambre implements Initializable{
 
     @FXML
     private Button btnGestch;
+    
+    @FXML
+    private Button btnSupr;
 
     @FXML
     private Button btnGestres;
@@ -75,7 +79,7 @@ public class PageChambre implements Initializable{
     }
     
     public ObservableList<Chambre> getChambre() throws SQLException {
-    	ObservableList c = FXCollections.observableArrayList();
+    	ObservableList<Chambre> c = FXCollections.observableArrayList();
     	Connection conn=Connexion.ConnexionBD();
     	PreparedStatement ps=(PreparedStatement) conn.prepareStatement("SELECT * FROM Chambre");
     	ResultSet rs = (ResultSet) ps.executeQuery();
@@ -84,15 +88,18 @@ public class PageChambre implements Initializable{
 			while(rs.next()) {
 				String type=rs.getString(4);
 				switch(type){
-					case "D": model.Double d = new model.Double(rs.getInt(1),rs.getInt(2));
+					case "Double": model.Double d = new model.Double(rs.getInt(1),rs.getInt(2));
 					c.add(d);
 					break;
-					case "S": Simple s = new Simple(rs.getInt(1),rs.getInt(2));
+					case "Simple": Simple s = new Simple(rs.getInt(1),rs.getInt(2));
 				    c.add(s);
-					case "N": Normal n = new Normal(rs.getInt(1),rs.getInt(2));
+				    break;
+					case "Normal": Normal n = new Normal(rs.getInt(1),rs.getInt(2));
 				    c.add(n);
-					case "P": Presidentiel p = new Presidentiel(rs.getInt(1),rs.getInt(2));
+				    break;
+					case "Presidentiel": Presidentiel p = new Presidentiel(rs.getInt(1),rs.getInt(2));
 				    c.add(p);
+				    break;
 				}
 	
 			 
@@ -105,12 +112,7 @@ public class PageChambre implements Initializable{
     	
     	return c;
     }
-    private void swicht(String type) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@FXML
+    @FXML
  public void handleButtonAction(ActionEvent event) throws IOException {
         
 
@@ -160,7 +162,29 @@ public class PageChambre implements Initializable{
     	windaj.setScene(form);
     	windaj.show(); 	
     }
-
+    @FXML
+    void Suprimer(ActionEvent event) throws SQLException {
+    	if((tabChamb.getSelectionModel().getSelectedItem())==null) {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Information");
+    		alert.setHeaderText("Information");
+    		alert.setContentText("Selectionner une chambre à suprimer");
+    		alert.showAndWait();
+    	}else {
+    	Chambre n = tabChamb.getSelectionModel().getSelectedItem();	
+    	try {
+    		Connection conn=Connexion.ConnexionBD();
+			PreparedStatement ps=(PreparedStatement) conn.prepareStatement("DELETE FROM `Chambre` WHERE numero = '"+n.getNumeroCh()+"'");		
+			ps.executeUpdate();			
+				ps.close();
+			} catch (Exception e3) {
+				e3.printStackTrace();
+	}
+    	init();
+    	}
+    	
+    }
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub

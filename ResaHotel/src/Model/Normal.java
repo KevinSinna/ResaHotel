@@ -7,7 +7,7 @@ package model;
  */
 public class Normal extends Chambre {
 	   private static double prix = 50;
-	    private static String typech = "N";
+	   final private String typech = "Normal";
 
     /**
      * Default constructor
@@ -25,13 +25,11 @@ public class Normal extends Chambre {
 		Normal.prix = prix;
 	}
 
-	public static String getTypech() {
+	public String getTypech() {
 		return typech;
 	}
 
-	public static void setTypech(String typech) {
-		Normal.typech = typech;
-	}
+
 
 	/**
      * 

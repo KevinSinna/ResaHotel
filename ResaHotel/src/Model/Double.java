@@ -7,7 +7,7 @@ package model;
  */
 public class Double extends Chambre {
 	private static double prix = 60;
-    final private String typech = "D";
+    final private String typech = "Double";
     ////////////////////////////
    
     public Double(int etag,int num) {

@@ -62,7 +62,7 @@
                   <TableColumn fx:id="colPrix" prefWidth="118.66668701171875" text="Prix" />
               </columns>
             </TableView>
-            <Button layoutX="209.0" layoutY="349.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #f94e4e;" text="Suprimer" textFill="WHITE">
+            <Button fx:id="btnSupr" layoutX="209.0" layoutY="349.0" mnemonicParsing="false" onAction="#Suprimer" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #f94e4e;" text="Suprimer" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
