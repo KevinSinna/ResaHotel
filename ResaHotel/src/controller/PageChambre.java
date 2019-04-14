@@ -214,11 +214,11 @@ public class PageChambre implements Initializable{
         //Controller ModifChambre
         ModifChambre modifchambre = loader.getController();
         //Envoye de l'element
-        modifchambre.getnum(mod.getNumeroCh());
+        modifchambre.getnum(mod);
                   
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        stage.setTitle("Second Window");
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

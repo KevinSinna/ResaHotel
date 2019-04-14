@@ -29,6 +29,8 @@
             <TextField fx:id="idnumMD" layoutX="26.0" layoutY="66.0" prefHeight="25.0" prefWidth="95.0" promptText="Numero" />
             <ChoiceBox fx:id="idTypebox" layoutX="173.0" layoutY="66.0" onDragDetected="#initializebox" prefHeight="25.0" prefWidth="107.0" />
             <Label layoutX="133.0" layoutY="70.0" text="Type :" />
+            <Label layoutX="133.0" layoutY="49.0" text="Type actuel :" textFill="#f70505" />
+            <Label fx:id="idtypeactu" layoutX="213.0" layoutY="49.0" text="type" />
          </children>
       </AnchorPane>
       <TextField fx:id="idetageMD" layoutX="27.0" layoutY="112.0" prefHeight="25.0" prefWidth="95.0" promptText="Etage" />
