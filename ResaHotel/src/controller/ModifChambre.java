@@ -14,10 +14,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.Chambre;
 
@@ -50,7 +52,32 @@ public class ModifChambre implements Initializable {
 
     @FXML
     void ValideChambre(ActionEvent event) {
-    	
+    	if((idetageMD.getText().isEmpty())||(idnumMD.getText().isEmpty())||(idTypebox.getValue() == null))
+    	{
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Information");
+    		alert.setHeaderText("Information");
+    		alert.setContentText("Champs Vide");
+    		alert.showAndWait();
+    	}else if((isStringInt(idetageMD.getText())==false)||(isStringInt(idnumMD.getText())==false)) {
+    		// ajout control si textfiel numero et etage pas un entier 
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Information");
+    		alert.setHeaderText("Information");
+    		alert.setContentText("Champs interdit");
+    		alert.showAndWait();
+    	}else {
+    		try{ Connection conn1=Connexion.ConnexionBD();
+    		PreparedStatement ps=(PreparedStatement) conn1.prepareStatement(
+    		"UPDATE `Chambre` SET  `etage`='"+idetageMD.getText()+"',`numero`='"+idnumMD.getText()+"',`prix`='"+90+"',`type`='"+idTypebox.getValue()+"'");    	
+    		ps.executeUpdate();
+    		ps.close();
+    	} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    		
+    	}
     }
 
     @FXML
@@ -89,6 +116,17 @@ public class ModifChambre implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		initializebox();
+	}
+	public boolean isStringInt(String s)
+	{
+	    try
+	    {
+	        Integer.parseInt(s);
+	        return true;
+	    } catch (NumberFormatException ex)
+	    {
+	        return false;
+	    }
 	}
     }
 
