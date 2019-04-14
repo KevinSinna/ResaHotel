@@ -67,7 +67,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="367.0" layoutY="349.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: ff8000;" text="Modifier" textFill="WHITE">
+            <Button fx:id="btnModif" layoutX="367.0" layoutY="349.0" mnemonicParsing="false" onAction="#ModifChambre" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: ff8000;" text="Modifier" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

@@ -32,9 +32,12 @@ import model.Presidentiel;
 import model.Simple;
 
 public class PageChambre implements Initializable{
+	
 	Stage stage; 
 	
 	Parent root;
+	@FXML
+	private Button btnModif;
 	@FXML
     private Button btnAjout;
     @FXML
@@ -55,21 +58,20 @@ public class PageChambre implements Initializable{
     @FXML
     private Button btnFact;
     @FXML
-    private TableView<Chambre> tabChamb;
+	protected TableView<Chambre> tabChamb;
 
     @FXML
-    private TableColumn<?, ?> colNum;
+    protected TableColumn<?, ?> colNum;
 
     @FXML
-    private TableColumn<?, ?> colEtage;
+    protected TableColumn<?, ?> colEtage;
 
     @FXML
-    private TableColumn<?, ?> colType;
+    protected TableColumn<?, ?> colType;
 
     @FXML
-    private TableColumn<?, ?> colPrix;
-
-
+    protected TableColumn<?, ?> colPrix;
+    	
     void init() throws SQLException {
     	colPrix.setCellValueFactory(new PropertyValueFactory<>("prix"));
     	colType.setCellValueFactory(new PropertyValueFactory<>("typech"));
@@ -195,6 +197,34 @@ public class PageChambre implements Initializable{
 			e.printStackTrace();
 		}
 	}
+    @FXML
+    void ModifChambre(ActionEvent event) {
+    	if((tabChamb.getSelectionModel().getSelectedItem())==null) {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Information");
+    		alert.setHeaderText("Information");
+    		alert.setContentText("Selectionner une chambre à modifier");
+    		alert.showAndWait();
+    	}else {
+    	Chambre mod = tabChamb.getSelectionModel().getSelectedItem();	
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/formmodif.fxml"));
+        Parent root;
+		try {
+			root = loader.load();       
+        //Controller ModifChambre
+        ModifChambre modifchambre = loader.getController();
+        //Envoye de l'element
+        modifchambre.getnum(mod.getNumeroCh());
+                  
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Second Window");
+        stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }}
     
 }
 
