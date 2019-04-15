@@ -56,6 +56,7 @@ public class ModifChambre implements Initializable {
 
     @FXML
     void ValideChambre(ActionEvent event) {
+    	// test si textfield vide ou pas
     	if((idetageMD.getText().isEmpty())||(idnumMD.getText().isEmpty())||(idTypebox.getValue() == null))
     	{
     		Alert alert = new Alert(AlertType.INFORMATION);
@@ -72,6 +73,7 @@ public class ModifChambre implements Initializable {
     		alert.showAndWait();
     	}else {
     		try{ 
+    			// initialisation prix par rapport au type de chambre
     			double prix =0;
     			switch(idTypebox.getValue()) {
     			case "Simple" : prix = Simple.getPrix();
@@ -79,6 +81,7 @@ public class ModifChambre implements Initializable {
     			case "Double" : prix = model.Double.getPrix();
     			case "Presidentiel" : prix = Presidentiel.getPrix();
     			}
+    			// Modification dans la base de donnée
     			Connection conn1=Connexion.ConnexionBD();
     		PreparedStatement ps=(PreparedStatement) conn1.prepareStatement(
 "UPDATE `Chambre` SET `etage`='"+idetageMD.getText()+"',`numero`='"+idnumMD.getText()+"',`prix`='"+prix+"',`type`='"+idTypebox.getValue()+"'WHERE numero = '"+numch+"'");  	
@@ -88,6 +91,7 @@ public class ModifChambre implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    		//fermeture de la fenetre
     		stage=(Stage) btnVMod.getScene().getWindow();   	
         	stage.close();
     	}
@@ -98,13 +102,14 @@ public class ModifChambre implements Initializable {
     	idTypebox.setItems(typeItems);
     	System.out.println("initialisé box");
     }
-    
+    /// initialisé les textfield avec les valeur de la chambre selectionnée
     public void getnum(Chambre m) {
     	try {
     	System.out.print("initalisation des valeur à modifier");
     	idnumMD.setText(Integer.toString(m.getNumeroCh()));
     	idetageMD.setText(Integer.toString(m.getEtage()));
     	this.numch = m.getNumeroCh();
+    	// connection base de donnée pour recupere le type et le prix de la chambre selectionnée
     	Connection conn=Connexion.ConnexionBD();
     	PreparedStatement ps=(PreparedStatement) conn.prepareStatement("SELECT * FROM `Chambre` WHERE numero = '"+m.getNumeroCh()+"'");
     	ResultSet rs = (ResultSet) ps.executeQuery();
@@ -120,6 +125,7 @@ public class ModifChambre implements Initializable {
 				e.printStackTrace();
 			}
 }
+    // fermé fenetre
     @FXML
     void close(ActionEvent event) {
     	stage=(Stage) idclose.getScene().getWindow();   	
@@ -131,6 +137,8 @@ public class ModifChambre implements Initializable {
 		// TODO Auto-generated method stub
 		initializebox();
 	}
+	
+	// teste String
 	public boolean isStringInt(String s)
 	{
 	    try
