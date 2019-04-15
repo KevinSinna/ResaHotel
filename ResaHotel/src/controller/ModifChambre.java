@@ -22,8 +22,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.Chambre;
+import model.Normal;
+import model.Presidentiel;
+import model.Simple;
 
 public class ModifChambre implements Initializable {
+	public int numch;
 	Stage stage;
 	
 	ObservableList<String> typeItems = FXCollections.observableArrayList("Normal","Simple","Presidentiel","Double");
@@ -67,16 +71,25 @@ public class ModifChambre implements Initializable {
     		alert.setContentText("Champs interdit");
     		alert.showAndWait();
     	}else {
-    		try{ Connection conn1=Connexion.ConnexionBD();
+    		try{ 
+    			double prix =0;
+    			switch(idTypebox.getValue()) {
+    			case "Simple" : prix = Simple.getPrix();
+    			case "Normal" : prix = Normal.getPrix();
+    			case "Double" : prix = model.Double.getPrix();
+    			case "Presidentiel" : prix = Presidentiel.getPrix();
+    			}
+    			Connection conn1=Connexion.ConnexionBD();
     		PreparedStatement ps=(PreparedStatement) conn1.prepareStatement(
-    		"UPDATE `Chambre` SET  `etage`='"+idetageMD.getText()+"',`numero`='"+idnumMD.getText()+"',`prix`='"+90+"',`type`='"+idTypebox.getValue()+"'");    	
+"UPDATE `Chambre` SET `etage`='"+idetageMD.getText()+"',`numero`='"+idnumMD.getText()+"',`prix`='"+prix+"',`type`='"+idTypebox.getValue()+"'WHERE numero = '"+numch+"'");  	
     		ps.executeUpdate();
     		ps.close();
     	} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    		
+    		stage=(Stage) btnVMod.getScene().getWindow();   	
+        	stage.close();
     	}
     }
 
@@ -91,6 +104,7 @@ public class ModifChambre implements Initializable {
     	System.out.print("initalisation des valeur à modifier");
     	idnumMD.setText(Integer.toString(m.getNumeroCh()));
     	idetageMD.setText(Integer.toString(m.getEtage()));
+    	this.numch = m.getNumeroCh();
     	Connection conn=Connexion.ConnexionBD();
     	PreparedStatement ps=(PreparedStatement) conn.prepareStatement("SELECT * FROM `Chambre` WHERE numero = '"+m.getNumeroCh()+"'");
     	ResultSet rs = (ResultSet) ps.executeQuery();
