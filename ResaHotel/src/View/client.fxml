@@ -62,13 +62,13 @@
                   <TableColumn prefWidth="154.66665649414062" text="Prenom" />
               </columns>
             </TableView>
-            <TextField layoutX="185.0" layoutY="361.0" prefHeight="25.0" prefWidth="171.0" />
-            <Button layoutX="601.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: #ff8000;" text="+" textFill="WHITE">
+            <TextField fx:id="idnom" layoutX="185.0" layoutY="361.0" prefHeight="25.0" prefWidth="171.0" />
+            <Button fx:id="btnAjoute" layoutX="601.0" layoutY="361.0" mnemonicParsing="false" onAction="#AjouteClient" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: #ff8000;" text="+" textFill="WHITE">
                <font>
                   <Font name="DejaVu Sans Bold" size="12.0" />
                </font>
             </Button>
-            <TextField layoutX="390.0" layoutY="361.0" />
+            <TextField fx:id="idprenom" layoutX="390.0" layoutY="361.0" />
             <Label layoutX="185.0" layoutY="337.0" text="Nom">
                <font>
                   <Font size="14.0" />
@@ -79,7 +79,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="561.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: f94e4e;" text="x" textFill="WHITE">
+            <Button fx:id="btnSupr" layoutX="561.0" layoutY="361.0" mnemonicParsing="false" onAction="#SuprClient" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: f94e4e;" text="x" textFill="WHITE">
                <font>
                   <Font name="DejaVu Sans Bold" size="12.0" />
                </font>

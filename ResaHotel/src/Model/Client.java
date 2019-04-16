@@ -2,7 +2,7 @@ package model;
 
 
 import java.sql.Connection;
-
+import java.util.Observable;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -12,23 +12,22 @@ import dao.Connexion;
 /**
  * 
  */
-public class Client {
-    private int idClient;
+public class Client extends Observable {
+    private int idClient = 0;
     private String nom;
     private String prenom;
     /**
      * Default constructor
      */
-    public Client(int id, String n,String p) {
-    	idClient = id; nom = n; prenom = p;
+    public Client( String n,String p) {
+    	 nom = n; prenom = p;
     }
     //////////////AJOUTE BSD ///////////////
     public void AjoutClient() {
     	Connection conn=Connexion.ConnexionBD();
-		try {PreparedStatement ps=(PreparedStatement) conn.prepareStatement("insert into Chambre (IdClient,Nom,Prenom) values (?,?,?)");
-		ps.setInt(1, this.idClient);
-		ps.setString(2,this.nom);
-		ps.setString(3,this.prenom);
+		try {PreparedStatement ps=(PreparedStatement) conn.prepareStatement("insert into Client (Nom,Prenom) values (?,?)");
+		ps.setString(1,this.nom);
+		ps.setString(2,this.prenom);
 		ps.executeUpdate();
 		ps.close();
 

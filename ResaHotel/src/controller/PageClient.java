@@ -1,16 +1,22 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Client;
 
-public class PageClient {
+public class PageClient implements Observer {
 	Stage stage; 
 	Parent root;
 
@@ -25,9 +31,19 @@ public class PageClient {
 
     @FXML
     private Button btnClient;
+    
+    @FXML
+    private Button btnAjoute;
+
+    @FXML
+    private Button btnSupr;
 
     @FXML
     private Button btnFact;
+    @FXML
+    private TextField idprenom;
+    @FXML
+    private TextField idnom;
 
     @FXML
     public void handleButtonAction(ActionEvent event) throws IOException {
@@ -70,6 +86,50 @@ public class PageClient {
     	stage.show();
     	}
     	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+    @FXML
+    void AjouteClient(ActionEvent event) {
+    	if ((idnom.getText().isEmpty())||(idprenom.getText().isEmpty())) {
+    		Alert alert = new Alert(AlertType.ERROR);
+    		alert.setTitle("Erreur");
+    		alert.setHeaderText("Saisie incorect");
+    		alert.setContentText("Champs vide ");
+    		alert.showAndWait();
+    	}else if(((isStringInt(idnom.getText())==true)|| (isStringInt(idprenom.getText()))==true)){
+    		{
+        		Alert alert = new Alert(AlertType.WARNING);
+        		alert.setTitle("Erreur");
+        		alert.setHeaderText("Saisie incorect");
+        		alert.setContentText("Champs interdit");
+        		alert.showAndWait();
+    		}
+    			
+    	}else {
+    	Client c = new Client(idnom.getText(),idprenom.getText());
+    	c.AjoutClient();
+    	}
+    }
+	public boolean isStringInt(String s)
+	{
+	    try
+	    {
+	        Integer.parseInt(s);
+	        return true;
+	    } catch (NumberFormatException ex)
+	    {
+	        return false;
+	    }
+	}
+    @FXML
+    void SuprClient(ActionEvent event) {
+    	//ObservableList.remove(c);
+    	//c.Supr();
+    }
 
 
 }
