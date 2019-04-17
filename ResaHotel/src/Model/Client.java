@@ -2,6 +2,7 @@ package model;
 
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Observable;
 
 import com.mysql.jdbc.PreparedStatement;
@@ -24,7 +25,7 @@ public class Client extends Observable {
     }
     //////////////AJOUTE BSD ///////////////
     public void AjoutClient() {
-    	Connection conn=Connexion.ConnexionBD();
+    	Connection conn=Connexion.ConCnexionBD();
 		try {PreparedStatement ps=(PreparedStatement) conn.prepareStatement("insert into Client (Nom,Prenom) values (?,?)");
 		ps.setString(1,this.nom);
 		ps.setString(2,this.prenom);
@@ -36,6 +37,7 @@ public class Client extends Observable {
 		e.printStackTrace();}
     }
 ///////////////// SUPRIMER //////////
+   
    
     public int getIdClient() {
 		return idClient;

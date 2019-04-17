@@ -143,6 +143,10 @@ public class PageClient implements Observer {
     	//ObservableList.remove(c);
     	//c.Supr();
     }
+    public void init() {
+    	
+    	
+    }
 
 
 }

@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class Reservation {
+public class Reservation extends Observable {
 	private Client idClient;
     private Date DateDeb;
     private Date DateFin;
@@ -16,12 +16,21 @@ public class Reservation {
     /**
      * Default constructor
      */
-    public Reservation() {
+    public Reservation(Client e, Date dated, Date datef, String att) {
+    	idClient = e;
+    	DateDeb = dated;
+    	DateFin = datef;
+    	Statut = att;
+    }
+    
+    public void AjoutChambre(Chambre e) {
+    	Chamb.add(e);
     }
 
 
     public void Annul() {
         // TODO implement here
+    	this.Statut = "Annuler";    	
     }
 
     /**
@@ -29,6 +38,7 @@ public class Reservation {
      */
     public void Confime() {
         // TODO implement here
+    	this.Statut = "Confirmer";
     }
 
 }
