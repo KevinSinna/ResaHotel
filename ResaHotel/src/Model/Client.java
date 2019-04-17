@@ -23,9 +23,13 @@ public class Client extends Observable {
     public Client( String n,String p) {
     	 nom = n; prenom = p;
     }
+    
+    public Client( int i,String n,String p) {
+   	 idClient=i;nom = n; prenom = p;
+   }
     //////////////AJOUTE BSD ///////////////
     public void AjoutClient() {
-    	Connection conn=Connexion.ConCnexionBD();
+    	Connection conn=Connexion.ConnexionBD();
 		try {PreparedStatement ps=(PreparedStatement) conn.prepareStatement("insert into Client (Nom,Prenom) values (?,?)");
 		ps.setString(1,this.nom);
 		ps.setString(2,this.prenom);
@@ -37,7 +41,17 @@ public class Client extends Observable {
 		e.printStackTrace();}
     }
 ///////////////// SUPRIMER //////////
-   
+    public void SuprClient() {
+    	Connection con = Connexion.ConnexionBD();
+    	try {
+			PreparedStatement ps =(PreparedStatement) con.prepareStatement("DELETE FROM `Client` WHERE IdClient = '"+this.idClient+"'");
+		ps.executeUpdate();
+		ps.close();
+    	} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}    	
+    }
    
     public int getIdClient() {
 		return idClient;

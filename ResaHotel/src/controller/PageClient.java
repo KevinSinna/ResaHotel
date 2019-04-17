@@ -1,16 +1,28 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.ResourceBundle;
 
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.ResultSet;
+
+import dao.Connexion;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -18,11 +30,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Client;
 
-public class PageClient implements Observer {
+public class PageClient implements Initializable, Observer {
 	Stage stage; 
 	Parent root;
 	@FXML
-	private TableView<?> TabViewCleint;
+	private TableView<Client> TabViewCleint;
 
 	@FXML
 	private TableColumn<?, ?> ColIdCleint;
@@ -57,7 +69,7 @@ public class PageClient implements Observer {
     private TextField idprenom;
     @FXML
     private TextField idnom;
-
+    
     @FXML
     public void handleButtonAction(ActionEvent event) throws IOException {
         
@@ -104,6 +116,7 @@ public class PageClient implements Observer {
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
 		
+		
 	}
     @FXML
     void AjouteClient(ActionEvent event) {
@@ -143,10 +156,40 @@ public class PageClient implements Observer {
     	//ObservableList.remove(c);
     	//c.Supr();
     }
-    public void init() {
-    	
+    void init() throws SQLException {
+    	ColNom.setCellValueFactory(new PropertyValueFactory<>("Nom"));
+    	ColPrenom.setCellValueFactory(new PropertyValueFactory<>("Prenom"));
+    	ColIdCleint.setCellValueFactory(new PropertyValueFactory<>("IdClient"));
+    	TabViewCleint.setItems(getClient());
+    }
+    public ObservableList<Client> getClient() {
+    	ObservableList<Client> c = FXCollections.observableArrayList();
+    	Connection con = Connexion.ConnexionBD();
+    	try {
+			PreparedStatement ps =(PreparedStatement) con.prepareStatement("SELECT * FROM `Client` ");
+			ResultSet rs=(ResultSet) ps.executeQuery();
+			while(rs.next()) {
+				Client p = new Client(rs.getInt(1),rs.getString(2),rs.getString(3));
+				c.add(p);
+			}
+    	} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return c;
     	
     }
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		try {
+			init();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 
 }
