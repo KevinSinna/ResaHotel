@@ -28,6 +28,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Chambre;
 import model.Client;
 
 public class PageClient implements Initializable, Observer {
@@ -138,6 +139,7 @@ public class PageClient implements Initializable, Observer {
     	}else {
     	Client c = new Client(idnom.getText(),idprenom.getText());
     	c.AjoutClient();
+    	TabViewCleint.getItems().add(c);
     	}
     }
 	public boolean isStringInt(String s)
@@ -152,9 +154,18 @@ public class PageClient implements Initializable, Observer {
 	    }
 	}
     @FXML
-    void SuprClient(ActionEvent event) {
-    	//ObservableList.remove(c);
-    	//c.Supr();
+    void SuprClient(ActionEvent event) throws SQLException {
+    	if((TabViewCleint.getSelectionModel().getSelectedItem())==null) {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Information");
+    		alert.setHeaderText("Information");
+    		alert.setContentText("Selectionner une chambre à suprimer");
+    		alert.showAndWait();
+    	}else {
+    	Client n = TabViewCleint.getSelectionModel().getSelectedItem();
+    	n.SuprClient();
+    	TabViewCleint.getItems().remove(n);
+    	}	
     }
     void init() throws SQLException {
     	ColNom.setCellValueFactory(new PropertyValueFactory<>("Nom"));
