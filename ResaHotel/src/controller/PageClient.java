@@ -28,7 +28,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.Chambre;
 import model.Client;
 
 public class PageClient implements Initializable, Observer {
@@ -70,7 +69,7 @@ public class PageClient implements Initializable, Observer {
     private TextField idprenom;
     @FXML
     private TextField idnom;
-    
+    // methode changer les page
     @FXML
     public void handleButtonAction(ActionEvent event) throws IOException {
         
@@ -116,11 +115,13 @@ public class PageClient implements Initializable, Observer {
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("teste");
 		
 	}
+	
+	// Ajotuer un client
     @FXML
-    void AjouteClient(ActionEvent event) {
+    void AjouteClient(ActionEvent event) throws SQLException {
     	if ((idnom.getText().isEmpty())||(idprenom.getText().isEmpty())) {
     		Alert alert = new Alert(AlertType.ERROR);
     		alert.setTitle("Erreur");
@@ -139,9 +140,12 @@ public class PageClient implements Initializable, Observer {
     	}else {
     	Client c = new Client(idnom.getText(),idprenom.getText());
     	c.AjoutClient();
-    	TabViewCleint.getItems().add(c);
+    	
+    	//TabViewCleint.getItems().add(c);
+    	init();
     	}
     }
+    // methode de verification String
 	public boolean isStringInt(String s)
 	{
 	    try
@@ -153,6 +157,8 @@ public class PageClient implements Initializable, Observer {
 	        return false;
 	    }
 	}
+	
+	// Suprimer client
     @FXML
     void SuprClient(ActionEvent event) throws SQLException {
     	if((TabViewCleint.getSelectionModel().getSelectedItem())==null) {
@@ -167,12 +173,15 @@ public class PageClient implements Initializable, Observer {
     	TabViewCleint.getItems().remove(n);
     	}	
     }
+    //initialisé le tableauview
     void init() throws SQLException {
     	ColNom.setCellValueFactory(new PropertyValueFactory<>("Nom"));
     	ColPrenom.setCellValueFactory(new PropertyValueFactory<>("Prenom"));
     	ColIdCleint.setCellValueFactory(new PropertyValueFactory<>("IdClient"));
     	TabViewCleint.setItems(getClient());
     }
+    
+    // recuperer base de donnée les donnée afin de initialiser le tableau
     public ObservableList<Client> getClient() {
     	ObservableList<Client> c = FXCollections.observableArrayList();
     	Connection con = Connexion.ConnexionBD();
@@ -182,6 +191,7 @@ public class PageClient implements Initializable, Observer {
 			while(rs.next()) {
 				Client p = new Client(rs.getInt(1),rs.getString(2),rs.getString(3));
 				c.add(p);
+				
 			}
     	} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -190,7 +200,8 @@ public class PageClient implements Initializable, Observer {
     	return c;
     	
     }
-
+    
+    // initalise la page
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub

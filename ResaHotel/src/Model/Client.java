@@ -26,6 +26,7 @@ public class Client extends Observable {
     
     public Client( int i,String n,String p) {
    	 idClient=i;nom = n; prenom = p;
+   	notifyObservers(this);
    }
     //////////////AJOUTE BSD ///////////////
     public void AjoutClient() {

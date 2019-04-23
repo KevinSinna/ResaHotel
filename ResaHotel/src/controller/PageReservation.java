@@ -1,16 +1,20 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.Observer;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class PageReservation {
+public class PageReservation implements Initializable, Observer {
 	Stage stage; 
 	Parent root;
 
@@ -70,5 +74,21 @@ public class PageReservation {
     	stage.show();
     	}
     	}
+
+	
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void update(java.util.Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
