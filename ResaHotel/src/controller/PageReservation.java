@@ -3,9 +3,6 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
@@ -22,6 +19,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class PageReservation implements Observer, Initializable {
 	Stage stage; 	
@@ -62,7 +60,7 @@ public class PageReservation implements Observer, Initializable {
     private Button btnAnnuler;
 
     @FXML
-    void AjoutReserv(ActionEvent event) {
+    void AjoutReserv(ActionEvent event){
     	  LocalDate aujourd = LocalDate.now();  	  
     	  //aujourd.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     	  
@@ -75,12 +73,35 @@ public class PageReservation implements Observer, Initializable {
     		
     	}
     	// teste si la date de fin est plus petit que la date de debut
-    	else if(getDebut.getValue().isAfter(getFin.getValue())) {
+    	else if((getDebut.getValue().isAfter(getFin.getValue()))) {
     		Alert alert = new Alert(AlertType.ERROR);
     		alert.setTitle("Erreur");
     		alert.setHeaderText("Date incorret");
     		alert.showAndWait();
-    	}
+    		//Ouvre la fenetre pour selectionner chambre
+    	}else {
+    		LocalDate debut = getDebut.getValue();
+    		LocalDate fin = getFin.getValue();
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/chambdispo.fxml"));
+            Parent root;
+            
+            try {
+				root = loader.load();
+				//lance methode dans le controller Etape Reserv avec les argument des date selectionner
+				EtapeReserv etapereserv = loader.getController();
+				etapereserv.initChamb(debut,fin);
+				//lancer nouvelle fenetre Etape 1
+				Stage etape = new Stage();
+		        etape.setScene(new Scene(root));
+		        etape.initStyle(StageStyle.UNDECORATED);
+		        etape.show();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} }
+    		
+            
+    	
 
     }
     

@@ -213,7 +213,7 @@ public class PageChambre implements Initializable{
 			root = loader.load();       
         //Controller ModifChambre
         ModifChambre modifchambre = loader.getController();
-        //Envoye de l'element
+        //Envoye de l'element via fonction qui est dans controller modifchambre avec l'elemnt en parametre
         modifchambre.getnum(mod);
                   
         Stage stage = new Stage();

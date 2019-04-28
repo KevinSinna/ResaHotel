@@ -48,11 +48,6 @@ public class ModifChambre implements Initializable {
 
 	    @FXML
 	    private Button btnVMod;
-	    
-	    public void transferMessage(int num) {
-	        //Display the message
-	       System.out.println(num);
-	    }
 
     @FXML
     void ValideChambre(ActionEvent event) {
@@ -102,6 +97,7 @@ public class ModifChambre implements Initializable {
     	idTypebox.setItems(typeItems);
     	System.out.println("initialisé box");
     }
+    
     /// initialisé les textfield avec les valeur de la chambre selectionnée
     public void getnum(Chambre m) {
     	try {

@@ -1,12 +1,14 @@
 package controller;
 
+import java.time.LocalDate;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class EtapeReserv1 {
+public class EtapeReserv {
 
     @FXML
     private TableView<?> tabDispo;
@@ -69,5 +71,11 @@ public class EtapeReserv1 {
     void close(ActionEvent event) {
 
     }
+
+	public void initChamb(LocalDate debut, LocalDate fin) {
+		// TODO Auto-generated method stub
+		System.out.println(fin);
+		System.out.println(debut);
+	}
 
 }
