@@ -4,17 +4,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EtapeReserv">
    <children>
-      <AnchorPane prefHeight="345.0" prefWidth="512.0">
+      <AnchorPane prefHeight="359.0" prefWidth="512.0">
          <children>
             <Pane prefHeight="41.0" prefWidth="512.0" style="-fx-background-color: f94e4e;">
                <children>
-                  <Label layoutX="14.0" layoutY="10.0" text="Etape 1 : Reservation" textFill="WHITE">
+                  <Label layoutX="14.0" layoutY="10.0" text="Reservation / Information" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -39,10 +40,12 @@
             </TableView>
             <Button fx:id="btnAjout" layoutX="244.0" layoutY="133.0" mnemonicParsing="false" onAction="#AjoutTab" style="-fx-background-color: ff8000;" text="+" textFill="WHITE" />
             <Button fx:id="btnSupr" layoutX="243.0" layoutY="215.0" mnemonicParsing="false" onAction="#SuprTab" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: f94e4e;" text="-" textFill="WHITE" />
-            <Button fx:id="btnSuivant" layoutX="367.0" layoutY="306.0" mnemonicParsing="false" onAction="#Suivant" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: ff8000;" text="Suivant" textFill="WHITE" />
+            <Button fx:id="btnSuivant" layoutX="393.0" layoutY="318.0" mnemonicParsing="false" onAction="#Suivant" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: ff8000;" text="Reservé" textFill="WHITE" />
             <Label layoutX="64.0" layoutY="41.0" text="Chambre disponible" />
             <Label layoutX="335.0" layoutY="41.0" text="Chambre selectionner" />
-            <Button fx:id="btnAnnul" layoutX="54.0" layoutY="306.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: f94e4e;" text="Annuler" textFill="WHITE" />
+            <Button fx:id="btnAnnul" layoutX="268.0" layoutY="318.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: f94e4e;" text="Annuler" textFill="WHITE" />
+            <Label layoutX="22.0" layoutY="297.0" text="Information Client" />
+            <TextField fx:id="inpID" layoutX="132.0" layoutY="293.0" prefHeight="25.0" prefWidth="59.0" promptText="ID Client" />
          </children>
       </AnchorPane>
    </children>
