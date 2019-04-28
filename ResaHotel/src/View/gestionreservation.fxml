@@ -55,30 +55,30 @@
                   </Label>
                </children>
             </Pane>
-            <TableView layoutX="171.0" layoutY="47.0" prefHeight="231.0" prefWidth="485.0">
+            <TableView fx:id="tabReserv" layoutX="171.0" layoutY="47.0" prefHeight="231.0" prefWidth="485.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="IdRes" />
-                <TableColumn prefWidth="75.0" text="IdClient" />
-                  <TableColumn prefWidth="75.0" text="Numero" />
-                  <TableColumn prefWidth="75.0" text="Date Debut" />
-                  <TableColumn prefWidth="92.66671752929688" text="Date fin" />
-                  <TableColumn prefWidth="89.99993896484375" text="Statut" />
+                <TableColumn fx:id="colRes" prefWidth="75.0" text="IdRes" />
+                <TableColumn fx:id="colClient" prefWidth="75.0" text="IdClient" />
+                  <TableColumn fx:id="colNum" prefWidth="75.0" text="Numero" />
+                  <TableColumn fx:id="colDebut" prefWidth="75.0" text="Date Debut" />
+                  <TableColumn fx:id="colFin" prefWidth="92.66671752929688" text="Date fin" />
+                  <TableColumn fx:id="colStatut" prefWidth="89.99993896484375" text="Statut" />
               </columns>
             </TableView>
-            <DatePicker layoutX="303.0" layoutY="291.0" />
-            <DatePicker layoutX="303.0" layoutY="333.0" />
-            <Button layoutX="286.0" layoutY="374.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #ff8000;" text="Ajoute" textFill="WHITE">
+            <DatePicker fx:id="getDebut" layoutX="303.0" layoutY="291.0" />
+            <DatePicker fx:id="getFin" layoutX="303.0" layoutY="333.0" />
+            <Button fx:id="btnAjout" layoutX="286.0" layoutY="374.0" mnemonicParsing="false" onAction="#AjoutReserv" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #ff8000;" text="Ajoute" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
             <Pane layoutX="514.0" layoutY="290.0" prefHeight="113.0" prefWidth="2.0" style="-fx-background-color: f94e4e;" />
-            <Button layoutX="533.0" layoutY="304.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #ff8000;" text="Confirmer" textFill="WHITE">
+            <Button fx:id="btnConfirm" layoutX="533.0" layoutY="304.0" mnemonicParsing="false" onAction="#Confirme" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #ff8000;" text="Confirmer" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="533.0" layoutY="346.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: f94e4e;" text="Annuler" textFill="WHITE">
+            <Button fx:id="btnAnnuler" layoutX="533.0" layoutY="346.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: f94e4e;" text="Annuler" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

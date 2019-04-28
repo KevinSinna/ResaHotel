@@ -2,6 +2,10 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
@@ -11,27 +15,86 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-public class PageReservation implements Initializable, Observer {
-	Stage stage; 
+public class PageReservation implements Observer, Initializable {
+	Stage stage; 	
 	Parent root;
-
     @FXML
     private Button btnAccueil;
-
     @FXML
     private Button btnGestch;
-
     @FXML
     private Button btnGestres;
-
     @FXML
     private Button btnClient;
-
     @FXML
     private Button btnFact;
+    @FXML
+    private TableView<?> tabReserv;
+    @FXML
+    private TableColumn<?, ?> colRes;
+    @FXML
+    private TableColumn<?, ?> colClient;
+    @FXML
+    private TableColumn<?, ?> colNum;
+    @FXML
+    private TableColumn<?, ?> colDebut;
+    @FXML
+    private TableColumn<?, ?> colFin;
+    @FXML
+    private TableColumn<?, ?> colStatut;
+    @FXML
+    private DatePicker getDebut;
+    @FXML
+    private DatePicker getFin;
+    @FXML
+    private Button btnAjout;
+    @FXML
+    private Button btnConfirm;
+    @FXML
+    private Button btnAnnuler;
+
+    @FXML
+    void AjoutReserv(ActionEvent event) {
+    	  LocalDate aujourd = LocalDate.now();  	  
+    	  //aujourd.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+    	  
+    	  // teste si la date est pas passer 
+    	if(getDebut.getValue().isBefore(aujourd)) {
+    		Alert alert = new Alert(AlertType.ERROR);
+    		alert.setTitle("Erreur");
+    		alert.setHeaderText("Date passer");
+    		alert.showAndWait();
+    		
+    	}
+    	// teste si la date de fin est plus petit que la date de debut
+    	else if(getDebut.getValue().isAfter(getFin.getValue())) {
+    		Alert alert = new Alert(AlertType.ERROR);
+    		alert.setTitle("Erreur");
+    		alert.setHeaderText("Date incorret");
+    		alert.showAndWait();
+    	}
+
+    }
+    
+    
+
+    @FXML
+    void Annuler(ActionEvent event) {
+    	
+    }
+
+    @FXML
+    void Confirme(ActionEvent event) {
+
+    }
 
     @FXML
  public void handleButtonAction(ActionEvent event) throws IOException {
@@ -74,19 +137,14 @@ public class PageReservation implements Initializable, Observer {
     	stage.show();
     	}
     	}
-
-	
-
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void update(java.util.Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
 		
 	}
 
-
-
 	@Override
-	public void update(java.util.Observable arg0, Object arg1) {
+	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
 	}
