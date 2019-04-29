@@ -142,7 +142,7 @@ public class EtapeReserv implements Initializable {
     		Chambre n = tabSelect.getItems().get(i);
     		res.AjoutChambre(n);
     		}
-    		
+    		res.AjoutBD();
     	}
     }
     @FXML

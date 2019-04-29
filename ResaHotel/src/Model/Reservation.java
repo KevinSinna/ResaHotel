@@ -1,7 +1,16 @@
 package model;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.*;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Observable;
+
+import com.mysql.jdbc.PreparedStatement;
+
+import dao.Connexion;
 
 /**
  * 
@@ -22,6 +31,30 @@ public class Reservation extends Observable {
     	DateDeb = debut;
     	DateFin = fin;
     	Statut = att;
+    }
+    
+    public void AjoutBD() {
+    	Connection conn=Connexion.ConnexionBD();
+    	for(int i =0;i<Chamb.size();i++) {
+    	try {
+			PreparedStatement ps=(PreparedStatement) conn.prepareStatement("INSERT INTO `Reservation`( `numero`, `IdClient`, `Statut`, `DateDeb`, `DateFin`, `Total`) VALUES (?,?,?,?,?,?)");
+			ps.setInt(1,Chamb.get(i).getNumeroCh());
+			ps.setInt(2, this.idClient.getIdClient());
+			ps.setString(3, this.Statut);
+			ps.setDate(4,getSQLdate(DateDeb));
+			ps.setDate(5,getSQLdate(DateFin));
+			ps.setDouble(6, Chamb.get(i).getTotalprvt());
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}}
+    	
+    }
+    public java.sql.Date getSQLdate(LocalDate e) {
+    	java.util.Date deb = Date.from(e.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+    	return new java.sql.Date(deb.getTime());
     }
     
     public Reservation() {

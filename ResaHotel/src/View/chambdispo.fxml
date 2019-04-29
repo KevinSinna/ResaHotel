@@ -27,8 +27,8 @@
                 <TableColumn fx:id="dispNum" prefWidth="52.00000190734863" text="Numero" />
                 <TableColumn fx:id="dispEtage" minWidth="6.66668701171875" prefWidth="49.333343505859375" text="Etage" />
                   <TableColumn fx:id="dispType" prefWidth="47.333335876464844" text="Type" />
-                  <TableColumn fx:id="dispPrix" prefWidth="39.33331807454428" text="Prix" />
-                  <TableColumn fx:id="dispTotal" prefWidth="74.66668701171875" text="Total" />
+                  <TableColumn fx:id="dispPrix" prefWidth="49.99993896484375" text="Prix" />
+                  <TableColumn fx:id="dispTotal" prefWidth="64.666748046875" text="Total" />
               </columns>
             </TableView>
             <TableView fx:id="tabSelect" layoutX="317.0" layoutY="58.0" prefHeight="227.0" prefWidth="266.0">
@@ -36,8 +36,8 @@
                   <TableColumn fx:id="colNum" prefWidth="52.00000190734863" text="Numero" />
                   <TableColumn fx:id="colEtage" minWidth="6.66668701171875" prefWidth="49.333343505859375" text="Etage" />
                   <TableColumn fx:id="colType" prefWidth="47.333335876464844" text="Type" />
-                  <TableColumn fx:id="colPrix" prefWidth="39.33331807454428" text="Prix" />
-                  <TableColumn fx:id="colTotal" prefWidth="74.66668701171875" text="Total" />
+                  <TableColumn fx:id="colPrix" prefWidth="49.99993896484375" text="Prix" />
+                  <TableColumn fx:id="colTotal" prefWidth="64.666748046875" text="Total" />
                </columns>
             </TableView>
             <Button fx:id="btnAjout" layoutX="282.0" layoutY="107.0" mnemonicParsing="false" onAction="#AjoutTab" style="-fx-background-color: ff8000;" text="+" textFill="WHITE" />
