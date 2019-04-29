@@ -81,7 +81,9 @@ public class EtapeReserv implements Initializable {
     }
 
     @FXML
-    void Suivant(ActionEvent event) {
+    void Suivant(ActionEvent event){
+    	System.out.println(fin);
+		System.out.println(debut);
 
     }
 
@@ -96,27 +98,28 @@ public class EtapeReserv implements Initializable {
     	stage.close();
     }
     // recuperation des date
-	public void initChamb(LocalDate debut, LocalDate fin) {
+  //initialisation tableau Chambre disponible
+	public void initChamb(LocalDate debut, LocalDate fin) throws SQLException {
 		// TODO Auto-generated method stub
 		this.debut = debut;
 		this.fin = fin;
 		System.out.println(fin);
 		System.out.println(debut);
-	}
-	//initialisation tableau Chambre disponible
-	void initTabDispo() throws SQLException {
 		dispPrix.setCellValueFactory(new PropertyValueFactory<>("prix"));
     	dispType.setCellValueFactory(new PropertyValueFactory<>("typech"));
     	dispEtage.setCellValueFactory(new PropertyValueFactory<>("Etage"));
     	dispNum.setCellValueFactory(new PropertyValueFactory<>("NumeroCh"));
-    	tabDispo.setItems(getChambreLibre());
+    	tabDispo.setItems(getChambreLibre(debut,fin));
 	}
+	
       // renvoye Tableau Chambre disponible
-	private ObservableList<Chambre> getChambreLibre() throws SQLException {
+	public ObservableList<Chambre> getChambreLibre(LocalDate debut, LocalDate fin) throws SQLException {
+		System.out.println(fin);
+		System.out.println(debut);
 		ObservableList<Chambre> c = FXCollections.observableArrayList();
 		Connection conn=Connexion.ConnexionBD();
 		System.out.println("'"+this.debut+"','"+this.fin+"'");
-    	PreparedStatement ps=(PreparedStatement) conn.prepareStatement("SELECT * FROM `Chambre` WHERE `numero` NOT IN (SELECT `numero` FROM `Reservation` WHERE (`DateDeb` BETWEEN '"+debut+"' AND '"+fin+"') AND (`DateFin` BETWEEN '"+debut+"' AND '"+fin+"') )");
+    	PreparedStatement ps=(PreparedStatement) conn.prepareStatement("SELECT * FROM `Chambre` WHERE `numero` NOT IN (SELECT `numero` FROM `Reservation` WHERE (`DateDeb` BETWEEN '"+this.debut+"' AND '"+this.fin+"') OR (`DateFin` BETWEEN '"+this.debut+"' AND '"+this.fin+"') )");
     	ResultSet rs = (ResultSet) ps.executeQuery();
     	while(rs.next()) {
 			String type=rs.getString(4);
@@ -143,12 +146,7 @@ public class EtapeReserv implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		try {
-			initTabDispo();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 
 }

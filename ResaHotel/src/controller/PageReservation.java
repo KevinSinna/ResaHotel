@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Observer;
 import java.util.ResourceBundle;
@@ -60,7 +61,7 @@ public class PageReservation implements Observer, Initializable {
     private Button btnAnnuler;
 
     @FXML
-    void AjoutReserv(ActionEvent event){
+    void AjoutReserv(ActionEvent event) throws SQLException{
     	  LocalDate aujourd = LocalDate.now();  	  
     	  //aujourd.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     	  
