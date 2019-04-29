@@ -13,7 +13,7 @@
    <children>
       <AnchorPane prefHeight="359.0" prefWidth="512.0">
          <children>
-            <Pane prefHeight="41.0" prefWidth="512.0" style="-fx-background-color: f94e4e;">
+            <Pane prefHeight="41.0" prefWidth="589.0" style="-fx-background-color: f94e4e;">
                <children>
                   <Label layoutX="14.0" layoutY="10.0" text="Reservation / Information" textFill="WHITE">
                      <font>
@@ -22,30 +22,35 @@
                   </Label>
                </children>
             </Pane>
-            <TableView fx:id="tabDispo" layoutX="22.0" layoutY="62.0" prefHeight="227.0" prefWidth="191.0">
+            <TableView fx:id="tabDispo" layoutX="9.0" layoutY="58.0" prefHeight="227.0" prefWidth="266.0">
               <columns>
                 <TableColumn fx:id="dispNum" prefWidth="52.00000190734863" text="Numero" />
                 <TableColumn fx:id="dispEtage" minWidth="6.66668701171875" prefWidth="49.333343505859375" text="Etage" />
                   <TableColumn fx:id="dispType" prefWidth="47.333335876464844" text="Type" />
                   <TableColumn fx:id="dispPrix" prefWidth="39.33331807454428" text="Prix" />
+                  <TableColumn fx:id="dispTotal" prefWidth="74.66668701171875" text="Total" />
               </columns>
             </TableView>
-            <TableView fx:id="tabSelect" layoutX="297.0" layoutY="62.0" prefHeight="227.0" prefWidth="191.0">
+            <TableView fx:id="tabSelect" layoutX="317.0" layoutY="58.0" prefHeight="227.0" prefWidth="266.0">
                <columns>
                   <TableColumn fx:id="colNum" prefWidth="52.00000190734863" text="Numero" />
                   <TableColumn fx:id="colEtage" minWidth="6.66668701171875" prefWidth="49.333343505859375" text="Etage" />
                   <TableColumn fx:id="colType" prefWidth="47.333335876464844" text="Type" />
                   <TableColumn fx:id="colPrix" prefWidth="39.33331807454428" text="Prix" />
+                  <TableColumn fx:id="colTotal" prefWidth="74.66668701171875" text="Total" />
                </columns>
             </TableView>
-            <Button fx:id="btnAjout" layoutX="244.0" layoutY="133.0" mnemonicParsing="false" onAction="#AjoutTab" style="-fx-background-color: ff8000;" text="+" textFill="WHITE" />
-            <Button fx:id="btnSupr" layoutX="243.0" layoutY="215.0" mnemonicParsing="false" onAction="#SuprTab" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: f94e4e;" text="-" textFill="WHITE" />
-            <Button fx:id="btnSuivant" layoutX="393.0" layoutY="318.0" mnemonicParsing="false" onAction="#Suivant" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: ff8000;" text="Reservé" textFill="WHITE" />
-            <Label layoutX="64.0" layoutY="41.0" text="Chambre disponible" />
-            <Label layoutX="335.0" layoutY="41.0" text="Chambre selectionner" />
-            <Button fx:id="btnAnnul" layoutX="268.0" layoutY="318.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: f94e4e;" text="Annuler" textFill="WHITE" />
+            <Button fx:id="btnAjout" layoutX="282.0" layoutY="107.0" mnemonicParsing="false" onAction="#AjoutTab" style="-fx-background-color: ff8000;" text="+" textFill="WHITE" />
+            <Button fx:id="btnSupr" layoutX="282.0" layoutY="234.0" mnemonicParsing="false" onAction="#SuprTab" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: f94e4e;" text="-" textFill="WHITE" />
+            <Button fx:id="btnSuivant" layoutX="468.0" layoutY="309.0" mnemonicParsing="false" onAction="#Suivant" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: ff8000;" text="Reservé" textFill="WHITE" />
+            <Label layoutX="91.0" layoutY="41.0" text="Chambre disponible" />
+            <Label layoutX="383.0" layoutY="41.0" text="Chambre selectionner" />
+            <Button fx:id="btnAnnul" layoutX="344.0" layoutY="309.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: f94e4e;" text="Annuler" textFill="WHITE" />
             <Label layoutX="22.0" layoutY="297.0" text="Information Client" />
             <TextField fx:id="inpID" layoutX="132.0" layoutY="293.0" prefHeight="25.0" prefWidth="59.0" promptText="ID Client" />
+            <Button fx:id="btnRech" layoutX="192.0" layoutY="293.0" mnemonicParsing="false" onAction="#RechClient" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: ff8000;" text="O" textFill="WHITE" />
+            <Label fx:id="Prenom" layoutX="132.0" layoutY="322.0" prefHeight="17.0" prefWidth="89.0" />
+            <Label fx:id="Nom" layoutX="25.0" layoutY="322.0" prefHeight="17.0" prefWidth="89.0" />
          </children>
       </AnchorPane>
    </children>

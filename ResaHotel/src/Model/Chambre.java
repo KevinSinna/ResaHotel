@@ -10,7 +10,6 @@ import dao.Connexion;
  * 
  */
 public class Chambre {
-
     /**
      * Default constructor
      */
@@ -21,6 +20,10 @@ public class Chambre {
     public Chambre() {
 		// TODO Auto-generated constructor stub
 	}
+    public void getTotal(double prix,double days) {
+        this.prixTotal = prix * days;
+    }
+ 
 
 	//////////////// AJOUT BSD ////////////////////
     public void Ajout(double prix, String type) {
@@ -38,29 +41,7 @@ public class Chambre {
 		e.printStackTrace();}
     }
     /////////////////////////////////////////////// 
-    public void ModifType(String typ) {
-    	double nprix = 0;
-    	switch (typ) {
-    	case "D":
-    		nprix = 60;
-    	case "S":
-    		nprix = 50;
-    	case "P":
-    		nprix = 90;
-    	case "N":
-    		nprix = 55;
-    	}
-    	Connection conn1=Connexion.ConnexionBD();
-		try {PreparedStatement ps=(PreparedStatement) conn1.prepareStatement(
-				"UPDATE `Chambre` SET `type`='"+typ+"',`prix`='"+nprix+"' WHERE etage='"+this.NumeroCh+"'");	
-		ps.executeUpdate();
-		ps.close();
-
-		} catch (Exception e1) {
-		System.out.println("error Update Chambre");
-		e1.printStackTrace();
-}
-    }
+   
    
 
     /**
@@ -75,6 +56,7 @@ public class Chambre {
      * 
      */
     private int etage;
+    private double prixTotal;
 
 
 
@@ -92,6 +74,14 @@ public class Chambre {
 
 	public void setEtage(int etage) {
 		this.etage = etage;
+	}
+
+	public double getTotalprvt() {
+		return prixTotal;
+	}
+
+	public void setTotal(double total) {
+		prixTotal = total;
 	}
     
    

@@ -48,6 +48,7 @@ public class ModifChambre implements Initializable {
 
 	    @FXML
 	    private Button btnVMod;
+	
 
     @FXML
     void ValideChambre(ActionEvent event) {

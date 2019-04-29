@@ -28,7 +28,9 @@ public class Client extends Observable {
    	 idClient=i;nom = n; prenom = p;
    	notifyObservers(this);
    }
-    //////////////AJOUTE BSD ///////////////
+    
+
+	//////////////AJOUTE BSD ///////////////
     public void AjoutClient() {
     	Connection conn=Connexion.ConnexionBD();
 		try {PreparedStatement ps=(PreparedStatement) conn.prepareStatement("insert into Client (Nom,Prenom) values (?,?)");
