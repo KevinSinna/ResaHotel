@@ -15,10 +15,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Chambre;
@@ -74,11 +76,29 @@ public class EtapeReserv implements Initializable {
 
     @FXML
     private Button btnAnnul;
-
+    // ajoute a ma liste de chambre selectionnée
     @FXML
     void AjoutTab(ActionEvent event) {
-
-    }
+    	//verifie si une chambre est selectionné
+    	if((tabDispo.getSelectionModel().getSelectedItem())==null) {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Information");
+    		alert.setHeaderText("Information");
+    		alert.setContentText("Selectionner une chambre ");
+    		alert.showAndWait();
+    	}else {
+    		// initialise tableau de selection chambre
+    	colPrix.setCellValueFactory(new PropertyValueFactory<>("prix"));
+    	colType.setCellValueFactory(new PropertyValueFactory<>("typech"));
+    	colEtage.setCellValueFactory(new PropertyValueFactory<>("Etage"));
+    	colNum.setCellValueFactory(new PropertyValueFactory<>("NumeroCh"));
+    	// chambre dispo selectionnée
+    	Chambre n = tabDispo.getSelectionModel().getSelectedItem();	
+    	// ajoute dans tab chambre selectionner
+    	tabSelect.getItems().add(n);
+    	// retire dans tab chambre dispo
+    	tabDispo.getItems().remove(n);
+    }}
 
     @FXML
     void Suivant(ActionEvent event){
@@ -89,7 +109,18 @@ public class EtapeReserv implements Initializable {
 
     @FXML
     void SuprTab(ActionEvent event) {
-
+     	//verifie si une chambre est selectionnée
+    	if((tabSelect.getSelectionModel().getSelectedItem())==null) {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Information");
+    		alert.setHeaderText("Information");
+    		alert.setContentText("Selectionner une chambre à retirer");
+    		alert.showAndWait();
+    	}else {
+    	Chambre n = tabSelect.getSelectionModel().getSelectedItem();	
+    	tabDispo.getItems().add(n);
+    	tabSelect.getItems().remove(n);
+    }
     }
     //Fermer la page
     @FXML
