@@ -34,10 +34,10 @@ public class PageClient implements Initializable, Observer {
 	Stage stage; 
 	Parent root;
 	@FXML
-	private TableView<Client> TabViewCleint;
+	private TableView<Client> TabViewClient;
 
 	@FXML
-	private TableColumn<?, ?> ColIdCleint;
+	private TableColumn<?, ?> ColIdClient;
 
 	@FXML
 	private TableColumn<?, ?> ColNom;
@@ -161,24 +161,24 @@ public class PageClient implements Initializable, Observer {
 	// Suprimer client
     @FXML
     void SuprClient(ActionEvent event) throws SQLException {
-    	if((TabViewCleint.getSelectionModel().getSelectedItem())==null) {
+    	if((TabViewClient.getSelectionModel().getSelectedItem())==null) {
     		Alert alert = new Alert(AlertType.INFORMATION);
     		alert.setTitle("Information");
     		alert.setHeaderText("Information");
     		alert.setContentText("Selectionner une chambre à suprimer");
     		alert.showAndWait();
     	}else {
-    	Client n = TabViewCleint.getSelectionModel().getSelectedItem();
+    	Client n = TabViewClient.getSelectionModel().getSelectedItem();
     	n.SuprClient();
-    	TabViewCleint.getItems().remove(n);
+    	TabViewClient.getItems().remove(n);
     	}	
     }
     //initialisé le tableauview
     void init() throws SQLException {
     	ColNom.setCellValueFactory(new PropertyValueFactory<>("Nom"));
     	ColPrenom.setCellValueFactory(new PropertyValueFactory<>("Prenom"));
-    	ColIdCleint.setCellValueFactory(new PropertyValueFactory<>("IdClient"));
-    	TabViewCleint.setItems(getClient());
+    	ColIdClient.setCellValueFactory(new PropertyValueFactory<>("IdClient"));
+    	TabViewClient.setItems(getClient());
     }
     
     // recuperer base de donnée les donnée afin de initialiser le tableau

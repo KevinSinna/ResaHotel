@@ -55,9 +55,9 @@
                   </Label>
                </children>
             </Pane>
-            <TableView fx:id="TabViewCleint" layoutX="172.0" layoutY="48.0" prefHeight="277.0" prefWidth="488.0">
+            <TableView fx:id="TabViewClient" layoutX="172.0" layoutY="48.0" prefHeight="277.0" prefWidth="488.0">
               <columns>
-                <TableColumn fx:id="ColIdCleint" prefWidth="148.66664123535156" text="IdClient" />
+                <TableColumn fx:id="ColIdClient" prefWidth="148.66664123535156" text="IdClient" />
                 <TableColumn fx:id="ColNom" prefWidth="184.00006103515625" text="Nom" />
                   <TableColumn fx:id="ColPrenom" prefWidth="154.66665649414062" text="Prenom" />
               </columns>

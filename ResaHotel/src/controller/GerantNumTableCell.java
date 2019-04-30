@@ -17,7 +17,6 @@ public class GerantNumTableCell  extends TableCell<Reservation, ArrayList<Chambr
 	 protected void updateItem(ArrayList<Chambre> item, boolean empty) {
          super.updateItem(item, empty);
          Chambre tem = item.get(1);
-         System.out.println(tem.getNumeroCh());
          String text = null;
          if (!empty && tem != null) {
         	 switch(flavor) {

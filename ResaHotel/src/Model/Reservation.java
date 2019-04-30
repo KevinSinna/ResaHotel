@@ -22,7 +22,7 @@ public class Reservation extends Observable {
     public ArrayList<Chambre> Chamb = new ArrayList<Chambre>();
     private int idRes;
     private String Statut;
-   // public Chambre Chambre;
+    //public Chambre Chambre;
     /**
      * Default constructor
      */
