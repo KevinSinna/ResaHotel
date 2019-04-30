@@ -30,6 +30,11 @@ public class Client extends Observable {
    }
     
 
+	public Client() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	//////////////AJOUTE BSD ///////////////
     public void AjoutClient() {
     	Connection conn=Connexion.ConnexionBD();

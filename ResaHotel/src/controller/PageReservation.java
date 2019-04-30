@@ -2,11 +2,19 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.ResultSet;
+
+import dao.Connexion;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,12 +23,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.Chambre;
+import model.Client;
+import model.Reservation;
 
 public class PageReservation implements Observer, Initializable {
 	Stage stage; 	
@@ -36,19 +48,21 @@ public class PageReservation implements Observer, Initializable {
     @FXML
     private Button btnFact;
     @FXML
-    private TableView<?> tabReserv;
+    private TableView<Reservation> tabReserv;
     @FXML
     private TableColumn<?, ?> colRes;
     @FXML
-    private TableColumn<?, ?> colClient;
+    private TableColumn<Reservation, Client> colClient;
     @FXML
-    private TableColumn<?, ?> colNum;
+    private TableColumn<Reservation, ArrayList<Chambre>> colNum;
     @FXML
     private TableColumn<?, ?> colDebut;
     @FXML
     private TableColumn<?, ?> colFin;
     @FXML
     private TableColumn<?, ?> colStatut;
+    @FXML
+    private TableColumn<Reservation, ArrayList<Chambre>> colTotal;
     @FXML
     private DatePicker getDebut;
     @FXML
@@ -110,6 +124,7 @@ public class PageReservation implements Observer, Initializable {
 
     @FXML
     void Annuler(ActionEvent event) {
+    	//Reservation c = tabReserv.getSelectionModel().getSelectedItem();
     	
     }
 
@@ -168,7 +183,45 @@ public class PageReservation implements Observer, Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
+		init();
+	}
+	public void init() {
+		colRes.setCellValueFactory(new PropertyValueFactory<>("idRes"));
+		colClient.setCellValueFactory(new PropertyValueFactory<>("Client"));
+        colClient.setCellFactory(tableColumn -> new GerantIdTableCell());
+    	//colNum.setCellValueFactory(new PropertyValueFactory<>("Chamb"));
+    	//colNum.setCellFactory(tableColumn -> new GerantNumTableCell(GerantNumTableCell.Flavor.NUMERO));
+    	colDebut.setCellValueFactory(new PropertyValueFactory<>("DateDeb"));
+    	colFin.setCellValueFactory(new PropertyValueFactory<>("DateFin"));
+    	colStatut.setCellValueFactory(new PropertyValueFactory<>("Statut"));
+    	//colTotal.setCellValueFactory(new PropertyValueFactory<>("Chamb"));
+    	//colTotal.setCellFactory(tableColumn -> new GerantNumTableCell(GerantNumTableCell.Flavor.FORPRIX));
+    	tabReserv.setItems(getReserv());
 	}
 
-}
+
+
+	private ObservableList<Reservation> getReserv() {
+		ObservableList<Reservation> c = FXCollections.observableArrayList();
+		
+    	Connection con = Connexion.ConnexionBD();
+    	PreparedStatement ps;
+		try {
+			ps = (PreparedStatement) con.prepareStatement("SELECT * FROM `Reservation`");
+			ResultSet rs=(ResultSet) ps.executeQuery();
+			while(rs.next()) {
+				Reservation r = new Reservation(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getDouble(7));
+				c.add(r);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// TODO Auto-generated method stub
+		return c;
+	}
+	}
+
+

@@ -16,30 +16,43 @@ import dao.Connexion;
  * 
  */
 public class Reservation extends Observable {
-	private Client idClient;
+	private Client Client;
     private LocalDate DateDeb;
     private LocalDate DateFin;
     public ArrayList<Chambre> Chamb = new ArrayList<Chambre>();
     private int idRes;
     private String Statut;
-
+   // public Chambre Chambre;
     /**
      * Default constructor
      */
     public Reservation(Client e, LocalDate debut, LocalDate fin, String att) {
-    	idClient = e;
+    	Client = e;
     	DateDeb = debut;
     	DateFin = fin;
     	Statut = att;
     }
-    
+    public Reservation(int idr, int num, int idclient,String att,Date debut,Date fin,double t) {
+    	idRes = idr;
+    	Client e = new Client();
+    	e.setIdClient(idclient);
+    	this.Client = e;
+    	Chambre c = new Chambre();
+    	c.setNumeroCh(num);
+    	c.setTotal(t);
+    	Chamb.add(c);
+    	//this.Chambre = c;
+    	DateDeb = debut.toLocalDate();
+    	DateFin = fin.toLocalDate();
+    	Statut = att;
+    }
     public void AjoutBD() {
     	Connection conn=Connexion.ConnexionBD();
     	for(int i =0;i<Chamb.size();i++) {
     	try {
 			PreparedStatement ps=(PreparedStatement) conn.prepareStatement("INSERT INTO `Reservation`( `numero`, `IdClient`, `Statut`, `DateDeb`, `DateFin`, `Total`) VALUES (?,?,?,?,?,?)");
 			ps.setInt(1,Chamb.get(i).getNumeroCh());
-			ps.setInt(2, this.idClient.getIdClient());
+			ps.setInt(2, this.Client.getIdClient());
 			ps.setString(3, this.Statut);
 			ps.setDate(4,getSQLdate(DateDeb));
 			ps.setDate(5,getSQLdate(DateFin));
@@ -68,12 +81,12 @@ public class Reservation extends Observable {
     	Chamb.remove(e);
     }
 
-    public Client getIdClient() {
-		return idClient;
+    public Client getClient() {
+		return Client;
 	}
 
-	public void setIdClient(Client idClient) {
-		this.idClient = idClient;
+	public void setClient(Client idClient) {
+		this.Client = idClient;
 	}
 
 	public LocalDate getDateDeb() {

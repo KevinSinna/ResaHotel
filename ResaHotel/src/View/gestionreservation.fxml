@@ -13,7 +13,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PageReservation">
    <children>
-      <AnchorPane id="btncl" prefHeight="407.0" prefWidth="667.0" style="-fx-border-radius: 0%;">
+      <AnchorPane id="btncl" prefHeight="407.0" prefWidth="655.0" style="-fx-border-radius: 0%;">
          <children>
             <AnchorPane prefHeight="407.0" prefWidth="162.0" style="-fx-background-color: #FF8000;">
                <children>
@@ -55,14 +55,15 @@
                   </Label>
                </children>
             </Pane>
-            <TableView fx:id="tabReserv" layoutX="171.0" layoutY="47.0" prefHeight="231.0" prefWidth="485.0">
+            <TableView fx:id="tabReserv" layoutX="171.0" layoutY="47.0" prefHeight="231.0" prefWidth="493.0">
               <columns>
-                <TableColumn fx:id="colRes" prefWidth="75.0" text="IdRes" />
-                <TableColumn fx:id="colClient" prefWidth="75.0" text="IdClient" />
-                  <TableColumn fx:id="colNum" prefWidth="75.0" text="Numero" />
-                  <TableColumn fx:id="colDebut" prefWidth="75.0" text="Date Debut" />
-                  <TableColumn fx:id="colFin" prefWidth="92.66671752929688" text="Date fin" />
-                  <TableColumn fx:id="colStatut" prefWidth="89.99993896484375" text="Statut" />
+                <TableColumn fx:id="colRes" prefWidth="56.000030517578125" text="IdRes" />
+                <TableColumn fx:id="colClient" prefWidth="67.33335876464844" text="IdClient" />
+                  <TableColumn fx:id="colNum" prefWidth="66.66668701171875" text="Numero" />
+                  <TableColumn fx:id="colDebut" prefWidth="77.3333740234375" text="Date Debut" />
+                  <TableColumn fx:id="colFin" prefWidth="78.00003051757812" text="Date fin" />
+                  <TableColumn fx:id="colStatut" prefWidth="78.66668701171875" text="Statut" />
+                  <TableColumn fx:id="colTotal" prefWidth="64.66668701171875" text="Total" />
               </columns>
             </TableView>
             <DatePicker fx:id="getDebut" layoutX="303.0" layoutY="291.0" />

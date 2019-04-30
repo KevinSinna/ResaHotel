@@ -108,7 +108,7 @@ public class EtapeReserv implements Initializable {
     	colType.setCellValueFactory(new PropertyValueFactory<>("typech"));
     	colEtage.setCellValueFactory(new PropertyValueFactory<>("Etage"));
     	colNum.setCellValueFactory(new PropertyValueFactory<>("NumeroCh"));
-    	colTotal.setCellValueFactory(new PropertyValueFactory<>("prixTotal"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("prixTotal"));
     	// chambre dispo selectionnée
     	Chambre n = tabDispo.getSelectionModel().getSelectedItem();	
     	// ajoute dans tab chambre selectionner
