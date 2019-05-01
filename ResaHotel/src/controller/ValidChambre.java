@@ -14,8 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.Double;
-import model.Normal;
 import model.Presidentiel;
 import model.Simple;
 
@@ -67,19 +65,19 @@ public class ValidChambre implements Initializable{
     	switch(idTypebox.getValue()) {
     	case "Normal":
     	model.Normal n = new model.Normal(Integer.parseInt(idetage.getText()), Integer.parseInt(idnumero.getText()));
-    	n.Ajout(Normal.getPrix(), n.getTypech());
+    	n.Ajout(n.getPrix(), n.getTypech());
     	break;
     	case "Simple":
         	Simple s = new Simple(Integer.parseInt(idetage.getText()), Integer.parseInt(idnumero.getText()));
-        	s.Ajout(Simple.getPrix(), s.getTypech());
+        	s.Ajout(s.getPrix(), s.getTypech());
         	break;
     	case "Presidentiel":
         	Presidentiel p = new Presidentiel(Integer.parseInt(idetage.getText()), Integer.parseInt(idnumero.getText()));
-        	p.Ajout(Presidentiel.getPrix(), p.getTypech());
+        	p.Ajout(p.getPrix(), p.getTypech());
         	break;
     	case "Double" :
         	model.Double d = new model.Double(Integer.parseInt(idetage.getText()), Integer.parseInt(idnumero.getText()));
-        	d.Ajout(Double.getPrix(), d.getTypech());
+        	d.Ajout(d.getPrix(), d.getTypech());
         	break;
     	}
     	stage=(Stage) btnValid.getScene().getWindow();   	

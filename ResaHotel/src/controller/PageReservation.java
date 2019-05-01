@@ -189,13 +189,13 @@ public class PageReservation implements Observer, Initializable {
 		colRes.setCellValueFactory(new PropertyValueFactory<>("idRes"));
 		colClient.setCellValueFactory(new PropertyValueFactory<>("Client"));
         colClient.setCellFactory(tableColumn -> new GerantIdTableCell());
-    	//colNum.setCellValueFactory(new PropertyValueFactory<>("Chamb"));
-    	//colNum.setCellFactory(tableColumn -> new GerantNumTableCell(GerantNumTableCell.Flavor.NUMERO));
+    	colNum.setCellValueFactory(new PropertyValueFactory<>("Chamb"));
+    	colNum.setCellFactory(tableColumn -> new GerantNumTableCell());
     	colDebut.setCellValueFactory(new PropertyValueFactory<>("DateDeb"));
     	colFin.setCellValueFactory(new PropertyValueFactory<>("DateFin"));
     	colStatut.setCellValueFactory(new PropertyValueFactory<>("Statut"));
-    	//colTotal.setCellValueFactory(new PropertyValueFactory<>("Chamb"));
-    	//colTotal.setCellFactory(tableColumn -> new GerantNumTableCell(GerantNumTableCell.Flavor.FORPRIX));
+    	colTotal.setCellValueFactory(new PropertyValueFactory<>("Chamb"));
+    	colTotal.setCellFactory(tableColumn -> new GerantprixTableCell());
     	tabReserv.setItems(getReserv());
 	}
 

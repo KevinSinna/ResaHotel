@@ -22,7 +22,6 @@ public class Reservation extends Observable {
     public ArrayList<Chambre> Chamb = new ArrayList<Chambre>();
     private int idRes;
     private String Statut;
-    //public Chambre Chambre;
     /**
      * Default constructor
      */
@@ -41,12 +40,12 @@ public class Reservation extends Observable {
     	c.setNumeroCh(num);
     	c.setTotal(t);
     	Chamb.add(c);
-    	//this.Chambre = c;
+    	System.out.println(Chamb.get(0).getNumeroCh());
     	DateDeb = debut.toLocalDate();
     	DateFin = fin.toLocalDate();
     	Statut = att;
     }
-    public void AjoutBD() {
+    public void AjoutBD(double days) {
     	Connection conn=Connexion.ConnexionBD();
     	for(int i =0;i<Chamb.size();i++) {
     	try {
@@ -56,7 +55,7 @@ public class Reservation extends Observable {
 			ps.setString(3, this.Statut);
 			ps.setDate(4,getSQLdate(DateDeb));
 			ps.setDate(5,getSQLdate(DateFin));
-			ps.setDouble(6, Chamb.get(i).getTotalprvt());
+			ps.setDouble(6, ((Chamb.get(i).getTotalprvt())*days));
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {

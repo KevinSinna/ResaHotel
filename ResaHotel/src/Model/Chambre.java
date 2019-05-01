@@ -16,13 +16,15 @@ public class Chambre {
     public Chambre(int e,int num) {
     	etage = e; NumeroCh = num;
     }
+    public Chambre(int e,int num,double it) {
+    	etage = e; NumeroCh = num; prixTotal=it;
+    }
    
     public Chambre() {
+    	
 		// TODO Auto-generated constructor stub
 	}
-    public void getTotal(double prix,double days) {
-        this.prixTotal = prix * days;
-    }
+    
  
 
 	//////////////// AJOUT BSD ////////////////////
@@ -56,7 +58,7 @@ public class Chambre {
      * 
      */
     private int etage;
-    private double prixTotal;
+    protected double prixTotal;
 
 
 
@@ -81,7 +83,7 @@ public class Chambre {
 	}
 
 	public void setTotal(double total) {
-		prixTotal = total;
+		this.prixTotal = total;
 	}
     
    

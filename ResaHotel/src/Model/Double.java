@@ -6,26 +6,31 @@ package model;
  * 
  */
 public class Double extends Chambre {
-	private static double prix = 60;
+	private double prix = 60;
     final private String typech = "Double";
     ////////////////////////////
    
     public Double(int etag,int num) {
     	super(etag,num); 	
     }
+    public Double(int etag,int num,double it) {
+    	super(etag,num,it);
+    	this.prixTotal = prix;
+    }
     public Double() {
-    	
+    	super();
     }
     
 
     
     /////GET SET PRIX ///////////
-	public static double getPrix() {
+	public double getPrix() {
 		return prix;
 	}
 
-	public static void setPrix(double prix) {
-		Double.prix = prix;
+
+	public void setPrix(double p) {
+		prix = p;
 	}
 	////////////////////////////////
 	public String getTypech() {

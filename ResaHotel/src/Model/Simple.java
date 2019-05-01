@@ -7,12 +7,16 @@ package model;
  */
 public class Simple extends Chambre {
 
-	 private static double prix = 40;
+	 private double prix = 40;
 	 final private static String typech = "Simple";
 
 	//////////////////////////
     public Simple(int e, int num) {
     	super(e,num);
+    }
+    public Simple(int e, int num,double it) {
+    	super(e,num,it);
+    	this.prixTotal = prix;
     }
 
 
@@ -21,12 +25,12 @@ public class Simple extends Chambre {
 	}
 
 
-	public static double getPrix() {
+	public double getPrix() {
 		return prix;
 	}
 
-	public static void setPrix(double prix) {
-		Simple.prix = prix;
+	public void setPrix(double prix) {
+		this.prix = prix;
 	}
 
 

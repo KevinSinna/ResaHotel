@@ -72,10 +72,10 @@ public class ModifChambre implements Initializable {
     			// initialisation prix par rapport au type de chambre
     			double prix =0;
     			switch(idTypebox.getValue()) {
-    			case "Simple" : prix = Simple.getPrix();
-    			case "Normal" : prix = Normal.getPrix();
-    			case "Double" : prix = model.Double.getPrix();
-    			case "Presidentiel" : prix = Presidentiel.getPrix();
+    			case "Simple" :Simple s = new Simple(); prix = s.getPrix();
+    			case "Normal" :Normal n = new Normal(); prix = n.getPrix();
+    			case "Double" :model.Double d = new model.Double(); prix = d.getPrix();
+    			case "Presidentiel" : Presidentiel p = new Presidentiel(); prix = p.getPrix();
     			}
     			// Modification dans la base de donnée
     			Connection conn1=Connexion.ConnexionBD();

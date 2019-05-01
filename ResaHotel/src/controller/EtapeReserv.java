@@ -75,11 +75,7 @@ public class EtapeReserv implements Initializable {
     @FXML
     private TableColumn<Chambre,Double> colPrix;
     
-    @FXML
-    private TableColumn<Chambre, Double> colTotal;
-    
-    @FXML
-    private TableColumn<Chambre, Double> dispTotal;
+ 
 
     @FXML
     private Button btnAjout;
@@ -108,7 +104,6 @@ public class EtapeReserv implements Initializable {
     	colType.setCellValueFactory(new PropertyValueFactory<>("typech"));
     	colEtage.setCellValueFactory(new PropertyValueFactory<>("Etage"));
     	colNum.setCellValueFactory(new PropertyValueFactory<>("NumeroCh"));
-        colTotal.setCellValueFactory(new PropertyValueFactory<>("prixTotal"));
     	// chambre dispo selectionnée
     	Chambre n = tabDispo.getSelectionModel().getSelectedItem();	
     	// ajoute dans tab chambre selectionner
@@ -142,7 +137,10 @@ public class EtapeReserv implements Initializable {
     		Chambre n = tabSelect.getItems().get(i);
     		res.AjoutChambre(n);
     		}
-    		res.AjoutBD();
+    		double days = ChronoUnit.DAYS.between(debut,fin);
+    		res.AjoutBD(days);
+    		stage=(Stage) btnSuivant.getScene().getWindow(); 
+    		stage.close();
     	}
     }
     @FXML
@@ -215,8 +213,8 @@ public class EtapeReserv implements Initializable {
     	dispType.setCellValueFactory(new PropertyValueFactory<>("typech"));
     	dispEtage.setCellValueFactory(new PropertyValueFactory<>("Etage"));
     	dispNum.setCellValueFactory(new PropertyValueFactory<>("NumeroCh"));
-    	dispTotal.setCellValueFactory(new PropertyValueFactory<>("prixTotal"));
     	tabDispo.setItems(getChambreLibre(debut,fin));
+    	
 	}
 	
       // renvoye Tableau Chambre disponible
@@ -233,21 +231,20 @@ public class EtapeReserv implements Initializable {
     	while(rs.next()) {
 			String type=rs.getString(4);
 			switch(type){
-				case "Double": model.Double d = new model.Double(rs.getInt(1),rs.getInt(2));
-				d.getTotal(model.Double.getPrix(), days);
-				System.out.println(d.getTotalprvt());
+				case "Double": model.Double d = new model.Double(rs.getInt(1),rs.getInt(2),1);
+				d.setPrix((d.getPrix()*days));
 				c.add(d);
 				break;
-				case "Simple": Simple s = new Simple(rs.getInt(1),rs.getInt(2));
-				s.getTotal(Simple.getPrix(), days);
+				case "Simple": Simple s = new Simple(rs.getInt(1),rs.getInt(2),1);
+				s.setPrix((s.getPrix()*days));
 			    c.add(s);
 			    break;
-				case "Normal": Normal n = new Normal(rs.getInt(1),rs.getInt(2));
-				n.getTotal(Normal.getPrix(), days);
+				case "Normal": Normal n = new Normal(rs.getInt(1),rs.getInt(2),1);
+				n.setPrix((n.getPrix()*days));
 			    c.add(n);
 			    break;
-				case "Presidentiel": Presidentiel p = new Presidentiel(rs.getInt(1),rs.getInt(2));
-				p.getTotal(Presidentiel.getPrix(), days);
+				case "Presidentiel": Presidentiel p = new Presidentiel(rs.getInt(1),rs.getInt(2),1);
+				p.setPrix((p.getPrix()*days));
 			    c.add(p);
 			    break;
 			}		 
