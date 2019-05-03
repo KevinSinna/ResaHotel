@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.ResultSet;
 
 import dao.Connexion;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 /**
  * 
@@ -40,14 +43,14 @@ public class Reservation extends Observable {
     	c.setNumeroCh(num);
     	c.setTotal(t);
     	Chamb.add(c);
-    	System.out.println(Chamb.get(0).getNumeroCh());
     	DateDeb = debut.toLocalDate();
     	DateFin = fin.toLocalDate();
     	Statut = att;
     }
-    public void AjoutBD(double days) {
+    public int AjoutBD(double days) throws SQLException {
     	Connection conn=Connexion.ConnexionBD();
     	for(int i =0;i<Chamb.size();i++) {
+    		if(getidclient()==true)
     	try {
 			PreparedStatement ps=(PreparedStatement) conn.prepareStatement("INSERT INTO `Reservation`( `numero`, `IdClient`, `Statut`, `DateDeb`, `DateFin`, `Total`) VALUES (?,?,?,?,?,?)");
 			ps.setInt(1,Chamb.get(i).getNumeroCh());
@@ -58,12 +61,37 @@ public class Reservation extends Observable {
 			ps.setDouble(6, ((Chamb.get(i).getTotalprvt())*days));
 			ps.executeUpdate();
 			ps.close();
+			return 1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}else{
+			Alert alert = new Alert(AlertType.ERROR);
+    		alert.setTitle("Information");
+    		alert.setHeaderText("Information");
+    		alert.setContentText("Numero Client n'existe pas");
+    		alert.showAndWait();
+    		return 0;
 		}}
-    	
-    }
+		return idRes;
+    	}
+    	//verifie si client existant
+    private boolean getidclient() throws SQLException {
+		// TODO Auto-generated method stub
+    	int id = -1;
+    	Connection conn=Connexion.ConnexionBD();
+    	PreparedStatement ps=(PreparedStatement) conn.prepareStatement("SELECT `IdClient` FROM `Client` WHERE `IdClient`='"+Client.getIdClient()+"'");
+    	ResultSet rs=(ResultSet) ps.executeQuery();
+    	if(rs.next()) {
+    		id = rs.getInt(1);
+    	}
+    	if(id==Client.getIdClient()) {
+    		return true;
+    	}else {
+		return false;}
+	}
+
+
     public java.sql.Date getSQLdate(LocalDate e) {
     	java.util.Date deb = Date.from(e.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
     	return new java.sql.Date(deb.getTime());
@@ -128,17 +156,28 @@ public class Reservation extends Observable {
 		Statut = statut;
 	}
 
-	public void Annul() {
-        // TODO implement here
+	public void Annul() throws SQLException {
+      // TODO implement here
     	this.Statut = "Annuler";    	
+    	Connection conn1=Connexion.ConnexionBD();
+		PreparedStatement ps=(PreparedStatement) conn1.prepareStatement(
+				"UPDATE `Reservation` SET `Statut`= '"+this.Statut+"'WHERE `IdRes`='"+this.idRes+"'");
+		ps.executeUpdate();
+		ps.close();
     }
 
     /**
+     * @throws SQLException 
      * 
      */
-    public void Confime() {
+    public void Confirme() throws SQLException {
         // TODO implement here
-    	this.Statut = "Confirmer";
+    	this.Statut = "Valider";
+    	Connection conn1=Connexion.ConnexionBD();
+		PreparedStatement ps=(PreparedStatement) conn1.prepareStatement(
+				"UPDATE `Reservation` SET `Statut`= '"+this.Statut+"'WHERE `IdRes`='"+this.idRes+"'");
+		ps.executeUpdate();	
+		ps.close();
     }
 
 }

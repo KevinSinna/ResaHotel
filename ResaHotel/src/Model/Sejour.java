@@ -19,7 +19,10 @@ public class Sejour {
     	TabConso = new ArrayList<Produit>();
     	
     }
-   ///////////// Ajout , Supr Produit ////////////
+   public Sejour() {
+		// TODO Auto-generated constructor stub
+	}
+	///////////// Ajout , Supr Produit ////////////
     public void AjoutProdList(Produit ProdAj) {
     	TabConso.add(ProdAj);
     }

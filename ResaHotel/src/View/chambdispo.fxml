@@ -11,7 +11,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EtapeReserv">
    <children>
-      <AnchorPane prefHeight="359.0" prefWidth="535.0">
+      <AnchorPane prefHeight="379.0" prefWidth="535.0">
          <children>
             <Pane prefHeight="41.0" prefWidth="535.0" style="-fx-background-color: f94e4e;">
                <children>
@@ -40,15 +40,25 @@
             </TableView>
             <Button fx:id="btnAjout" layoutX="257.0" layoutY="106.0" mnemonicParsing="false" onAction="#AjoutTab" style="-fx-background-color: ff8000;" text="+" textFill="WHITE" />
             <Button fx:id="btnSupr" layoutX="256.0" layoutY="229.0" mnemonicParsing="false" onAction="#SuprTab" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: f94e4e;" text="-" textFill="WHITE" />
-            <Button fx:id="btnSuivant" layoutX="422.0" layoutY="309.0" mnemonicParsing="false" onAction="#Suivant" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: ff8000;" text="Reservé" textFill="WHITE" />
+            <Button fx:id="btnSuivant" layoutX="419.0" layoutY="334.0" mnemonicParsing="false" onAction="#Suivant" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: ff8000;" text="Reservé" textFill="WHITE" />
             <Label layoutX="91.0" layoutY="41.0" text="Chambre disponible" />
             <Label layoutX="349.0" layoutY="41.0" text="Chambre selectionner" />
-            <Button fx:id="btnAnnul" layoutX="310.0" layoutY="309.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: f94e4e;" text="Annuler" textFill="WHITE" />
+            <Button fx:id="btnAnnul" layoutX="300.0" layoutY="334.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: f94e4e;" text="Annuler" textFill="WHITE" />
             <Label layoutX="22.0" layoutY="297.0" text="Information Client" />
             <TextField fx:id="inpID" layoutX="132.0" layoutY="293.0" prefHeight="25.0" prefWidth="59.0" promptText="ID Client" />
             <Button fx:id="btnRech" layoutX="192.0" layoutY="293.0" mnemonicParsing="false" onAction="#RechClient" prefHeight="21.0" prefWidth="25.0" style="-fx-background-color: ff8000;" text="O" textFill="WHITE" />
             <Label fx:id="Prenom" layoutX="132.0" layoutY="322.0" prefHeight="17.0" prefWidth="89.0" />
             <Label fx:id="Nom" layoutX="25.0" layoutY="322.0" prefHeight="17.0" prefWidth="89.0" />
+            <Label layoutX="373.0" layoutY="297.0" text="Total : ">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="labTotal" layoutX="448.0" layoutY="297.0" prefHeight="21.0" prefWidth="59.0">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

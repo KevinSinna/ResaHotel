@@ -121,16 +121,52 @@ public class PageReservation implements Observer, Initializable {
     }
     
     
-
+    // Annuler une reservation
     @FXML
-    void Annuler(ActionEvent event) {
-    	//Reservation c = tabReserv.getSelectionModel().getSelectedItem();
-    	
+    void Annuler(ActionEvent event) throws SQLException {
+    	//selectionne une reservation verifier
+    	Reservation r = tabReserv.getSelectionModel().getSelectedItem();
+    	String att = "Attente";
+    	if((r==null)) {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Information");
+    		alert.setHeaderText("Information");
+    		alert.setContentText("Selectionner une reservation pour annuler");
+    		alert.showAndWait();
+    		// verifier si elle est bien en attente
+    	}else if((r.getStatut().equals(att))){
+    	r.Annul();
+    	init();
+    	}else {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Information");
+    		alert.setHeaderText("Information");
+    		alert.setContentText("Erreur verifier le statut");
+    		alert.showAndWait();
+    	}
     }
 
     @FXML
-    void Confirme(ActionEvent event) {
-
+    void Confirme(ActionEvent event) throws SQLException {
+    	Reservation r = tabReserv.getSelectionModel().getSelectedItem();
+    	String att = "Attente";
+    	if((r==null)) {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Information");
+    		alert.setHeaderText("Information");
+    		alert.setContentText("Selectionner une reservation pour annuler");
+    		alert.showAndWait();
+    		// verifier si elle est bien en attente
+    	}else if((r.getStatut().equals(att))){
+    	r.Confirme();
+    	init();
+    	}else {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Information");
+    		alert.setHeaderText("Information");
+    		alert.setContentText("Erreur verifier le statut");
+    		alert.showAndWait();
+    	}
     }
 
     @FXML
@@ -177,7 +213,7 @@ public class PageReservation implements Observer, Initializable {
 	@Override
 	public void update(java.util.Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
-		
+		init();
 	}
 
 	@Override

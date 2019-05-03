@@ -115,7 +115,12 @@ public class PageClient implements Initializable, Observer {
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
-		System.out.println("teste");
+		try {
+			init();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -165,7 +170,7 @@ public class PageClient implements Initializable, Observer {
     		Alert alert = new Alert(AlertType.INFORMATION);
     		alert.setTitle("Information");
     		alert.setHeaderText("Information");
-    		alert.setContentText("Selectionner une chambre à suprimer");
+    		alert.setContentText("Selectionner un client à suprimer");
     		alert.showAndWait();
     	}else {
     	Client n = TabViewClient.getSelectionModel().getSelectedItem();

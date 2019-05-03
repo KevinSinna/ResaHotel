@@ -35,7 +35,10 @@ import model.Simple;
 public class EtapeReserv implements Initializable {
 	Stage stage;
 	public LocalDate debut;
+	public double total = 0;
 	public LocalDate fin;
+	public String totaltxt;
+	public double days;
 	@FXML
 	private TextField inpID;
 	
@@ -44,6 +47,9 @@ public class EtapeReserv implements Initializable {
 
 	@FXML
 	private Label Nom;
+	
+    @FXML
+    private Label labTotal;
 
     @FXML
     private TableView<Chambre> tabDispo;
@@ -107,15 +113,20 @@ public class EtapeReserv implements Initializable {
     	// chambre dispo selectionnée
     	Chambre n = tabDispo.getSelectionModel().getSelectedItem();	
     	// ajoute dans tab chambre selectionner
-    	System.out.println(n.getTotalprvt());
+    	//initialisé le prix total par rapport au chambre ajouté
+    	days = ChronoUnit.DAYS.between(debut,fin);
+    	this.total += n.getTotalprvt()*days;
     	tabSelect.getItems().add(n);
     	// retire dans tab chambre dispo
+    	System.out.println(total);
+    	totaltxt = String.valueOf(total);
+    	labTotal.setText(totaltxt);
     	tabDispo.getItems().remove(n);
     }}
 
 
 	@FXML
-    void Suivant(ActionEvent event){
+    void Suivant(ActionEvent event) throws SQLException{
     	// verification des information entrée 
     	if((inpID.getText().isEmpty())||(tabSelect.getItems()==null)) {
     		Alert alert = new Alert(AlertType.ERROR);
@@ -131,16 +142,18 @@ public class EtapeReserv implements Initializable {
     		alert.showAndWait();
     	}else {
     		Client client = new Client(Integer.parseInt(inpID.getText()),Nom.getText(),Prenom.getText());
-    		Reservation res = new Reservation(client,debut,fin,"En Attente");
+    		Reservation res = new Reservation(client,debut,fin,"Attente");
     		// Ajout dans objet toute les chambre reservé
     		for(int i=0; i<tabSelect.getItems().size();i++) {
     		Chambre n = tabSelect.getItems().get(i);
     		res.AjoutChambre(n);
     		}
-    		double days = ChronoUnit.DAYS.between(debut,fin);
-    		res.AjoutBD(days);
+    		days = ChronoUnit.DAYS.between(debut,fin);
+    		int i = res.AjoutBD(days);
+    		if(i==1) {
     		stage=(Stage) btnSuivant.getScene().getWindow(); 
     		stage.close();
+    		}
     	}
     }
     @FXML
@@ -192,6 +205,12 @@ public class EtapeReserv implements Initializable {
     	}else {
     	Chambre n = tabSelect.getSelectionModel().getSelectedItem();	
     	tabDispo.getItems().add(n);
+    	//initialisé le prix total par rapport au chambre enlever
+    	days = ChronoUnit.DAYS.between(debut,fin);
+    	total -= n.getTotalprvt()*days;
+    	totaltxt = String.valueOf(total);
+    	labTotal.setText(totaltxt);
+    	// enleve la chambre dans le tableaux
     	tabSelect.getItems().remove(n);
     }
     }
