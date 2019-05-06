@@ -168,7 +168,7 @@ public class PageReservation implements Observer, Initializable {
     		alert.showAndWait();
     	}
     }
-
+// menu barre fontionnalité des boutton pour changer page
     @FXML
  public void handleButtonAction(ActionEvent event) throws IOException {
         
@@ -221,6 +221,7 @@ public class PageReservation implements Observer, Initializable {
 		// TODO Auto-generated method stub
 		init();
 	}
+	// initialisation du tableau
 	public void init() {
 		colRes.setCellValueFactory(new PropertyValueFactory<>("idRes"));
 		colClient.setCellValueFactory(new PropertyValueFactory<>("Client"));
@@ -236,7 +237,7 @@ public class PageReservation implements Observer, Initializable {
 	}
 
 
-
+// recuperation des donnée pour l'inserer dans le tableau
 	private ObservableList<Reservation> getReserv() {
 		ObservableList<Reservation> c = FXCollections.observableArrayList();
 		

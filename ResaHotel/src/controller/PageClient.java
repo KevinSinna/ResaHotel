@@ -198,6 +198,7 @@ public class PageClient implements Initializable, Observer {
 				c.add(p);
 				
 			}
+			ps.close();
     	} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

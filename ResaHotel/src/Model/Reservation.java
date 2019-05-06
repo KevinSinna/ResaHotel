@@ -49,8 +49,9 @@ public class Reservation extends Observable {
     }
     public int AjoutBD(double days) throws SQLException {
     	Connection conn=Connexion.ConnexionBD();
-    	for(int i =0;i<Chamb.size();i++) {
-    		if(getidclient()==true)
+    	
+    		if(getidclient()==true) {
+    			for(int i =0;i<Chamb.size();i++) {
     	try {
 			PreparedStatement ps=(PreparedStatement) conn.prepareStatement("INSERT INTO `Reservation`( `numero`, `IdClient`, `Statut`, `DateDeb`, `DateFin`, `Total`) VALUES (?,?,?,?,?,?)");
 			ps.setInt(1,Chamb.get(i).getNumeroCh());
@@ -60,20 +61,22 @@ public class Reservation extends Observable {
 			ps.setDate(5,getSQLdate(DateFin));
 			ps.setDouble(6, ((Chamb.get(i).getTotalprvt())*days));
 			ps.executeUpdate();
+    	
 			ps.close();
-			return 1;
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}else{
+		}}
+    			return 1;
+    		}else{
 			Alert alert = new Alert(AlertType.ERROR);
     		alert.setTitle("Information");
     		alert.setHeaderText("Information");
     		alert.setContentText("Numero Client n'existe pas");
     		alert.showAndWait();
     		return 0;
-		}}
-		return idRes;
+		}
     	}
     	//verifie si client existant
     private boolean getidclient() throws SQLException {
@@ -155,7 +158,7 @@ public class Reservation extends Observable {
 	public void setStatut(String statut) {
 		Statut = statut;
 	}
-
+//methode mise a jour BD du statut de la reservation en annuler
 	public void Annul() throws SQLException {
       // TODO implement here
     	this.Statut = "Annuler";    	
@@ -165,11 +168,8 @@ public class Reservation extends Observable {
 		ps.executeUpdate();
 		ps.close();
     }
-
-    /**
-     * @throws SQLException 
-     * 
-     */
+//methode mise a jour BD du statut de la reservation en valider
+    
     public void Confirme() throws SQLException {
         // TODO implement here
     	this.Statut = "Valider";
