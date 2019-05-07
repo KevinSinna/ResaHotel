@@ -83,7 +83,7 @@ public class PageReservation implements Observer, Initializable {
     	if(getDebut.getValue().isBefore(aujourd)) {
     		Alert alert = new Alert(AlertType.ERROR);
     		alert.setTitle("Erreur");
-    		alert.setHeaderText("Date passer");
+    		alert.setHeaderText("Date passé");
     		alert.showAndWait();
     		
     	}

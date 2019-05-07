@@ -13,6 +13,9 @@ public class Service extends Produit {
     public Service(double prix , String nom) {
     	super(nom,prix);
     }
+	public Service() {
+		// TODO Auto-generated constructor stub
+	}
 	public String getType() {
 		return type;
 	}
