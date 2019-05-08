@@ -5,6 +5,8 @@ import java.sql.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
 import dao.Connexion;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 /**
  * 
@@ -39,6 +41,11 @@ public class Chambre {
 		ps.close();
 
 		} catch (Exception e) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Information");
+    		alert.setHeaderText("Information");
+    		alert.setContentText("Numero Chambre existe deja ");
+    		alert.showAndWait();
 		System.out.println("error insert to Chambre");
 		e.printStackTrace();}
     }

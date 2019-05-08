@@ -30,6 +30,7 @@ public class main extends Application {
 		root = FXMLLoader.load(getClass().getResource("/View/accueil.fxml"));
 		Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
 stage.show();
 	}
 

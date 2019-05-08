@@ -57,6 +57,11 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
+                  <Button fx:id="idclose" layoutX="467.0" layoutY="7.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="31.0" style="-fx-background-color: je94e4e;" text="X" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
             <Label layoutX="304.0" layoutY="231.0" text="Bienvenue sur ResaHotel">

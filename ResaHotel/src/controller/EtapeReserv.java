@@ -128,7 +128,7 @@ public class EtapeReserv implements Initializable {
 	@FXML
     void Suivant(ActionEvent event) throws SQLException{
     	// verification des information entrée 
-    	if((inpID.getText().isEmpty())||(tabSelect.getItems()==null)) {
+    	if((inpID.getText().isEmpty())||(tabSelect.getItems().isEmpty())) {
     		Alert alert = new Alert(AlertType.ERROR);
     		alert.setTitle("Error");
     		alert.setHeaderText("Error");

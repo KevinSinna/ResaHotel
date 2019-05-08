@@ -37,13 +37,13 @@ public class Produit {
     	nomProd = nom;
     	this.prix = prix;
     }
-
-    /////////// Ajout BSD ////////////////
-    public void Ajout(String type,String nom,double prix, int idRes) {
+    
+    // Ajout BSD
+    public void AjoutBD2(String type) {
     	Connection conn=Connexion.ConnexionBD();
 		try {PreparedStatement ps=(PreparedStatement) conn.prepareStatement("INSERT INTO `Produit`(`prix`, `nom`, `type`) values (?,?,?)");
 		ps.setString(3, type);
-		ps.setString(2, nom);
+		ps.setString(2, this.nomProd);
 		ps.setDouble(1,prix);
 		ps.executeUpdate();
 		ps.close();
@@ -53,6 +53,11 @@ public class Produit {
 		System.out.println("error insert to Chambre");
 		e.printStackTrace();}
     }
+    public String getType() {
+    	String type="a";
+		return type;
+	}
+	
     //initialisé id de l'objet
 private void initID() throws SQLException {
 		// TODO Auto-generated method stub

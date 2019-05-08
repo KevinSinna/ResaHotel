@@ -45,16 +45,16 @@ public class PageChambre extends Fenetre implements Initializable{
 	protected TableView<Chambre> tabChamb;
 
     @FXML
-    protected TableColumn<?, ?> colNum;
+    protected TableColumn<Chambre, Integer> colNum;
 
     @FXML
-    protected TableColumn<?, ?> colEtage;
+    protected TableColumn<Chambre, Integer> colEtage;
 
     @FXML
-    protected TableColumn<?, ?> colType;
+    protected TableColumn<Chambre, String> colType;
 
     @FXML
-    protected TableColumn<?, ?> colPrix;
+    protected TableColumn<Chambre, Double> colPrix;
     	
     void init() throws SQLException {
     	colPrix.setCellValueFactory(new PropertyValueFactory<>("prix"));
@@ -98,7 +98,7 @@ public class PageChambre extends Fenetre implements Initializable{
     	
     	return c;
     }
-
+    // ouvre fenetre pour ajoute une chambre
     @FXML
     void AjoutChambre(ActionEvent event) throws IOException {
     	Stage windaj = new Stage();
@@ -108,6 +108,7 @@ public class PageChambre extends Fenetre implements Initializable{
     	windaj.setScene(form);
     	windaj.show(); 	
     }
+    //verifie si une chambre est selectionnée
     @FXML
     void Suprimer(ActionEvent event) throws SQLException {
     	if((tabChamb.getSelectionModel().getSelectedItem())==null) {
@@ -117,6 +118,7 @@ public class PageChambre extends Fenetre implements Initializable{
     		alert.setContentText("Selectionner une chambre à suprimer");
     		alert.showAndWait();
     	}else {
+    		// suprime les chambre selectionnée dans la base de donnée
     	Chambre n = tabChamb.getSelectionModel().getSelectedItem();	
     	try {
     		Connection conn=Connexion.ConnexionBD();
@@ -126,7 +128,8 @@ public class PageChambre extends Fenetre implements Initializable{
 			} catch (Exception e3) {
 				e3.printStackTrace();
 	}
-    	init();
+    	tabChamb.getItems().remove(n);
+    	//init();
     	}
     	
     }
@@ -137,6 +140,7 @@ public class PageChambre extends Fenetre implements Initializable{
 		try {
 			init();
 		} catch (SQLException e) {
+			
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

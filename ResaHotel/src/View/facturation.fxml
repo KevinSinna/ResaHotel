@@ -54,31 +54,51 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
+                  <Button fx:id="idclose" layoutX="462.0" layoutY="7.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="31.0" style="-fx-background-color: je94e4e;" text="X" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
             <TextField fx:id="inpId" layoutX="175.0" layoutY="49.0" promptText="Id Client" />
             <Button fx:id="btnIdClient" layoutX="335.0" layoutY="49.0" mnemonicParsing="false" onAction="#RechercheClient" style="-fx-background-color: FF8000;" text="Recherche" textFill="WHITE" />
-            <TableView fx:id="tabprod" layoutX="175.0" layoutY="92.0" prefHeight="250.0" prefWidth="234.0">
+            <TableView fx:id="tabprod" layoutX="175.0" layoutY="92.0" prefHeight="310.0" prefWidth="241.0">
               <columns>
                 <TableColumn fx:id="colNom" prefWidth="75.0" text="Nom" />
                   <TableColumn fx:id="colPrix" prefWidth="75.0" text="Prix" />
-                <TableColumn fx:id="colType" text="Type" />
+                <TableColumn fx:id="colType" prefWidth="89.33336385091147" text="Type" />
               </columns>
             </TableView>
-            <Button fx:id="btnAjout" layoutX="525.0" layoutY="298.0" mnemonicParsing="false" onAction="#AjoutProd" prefHeight="29.0" prefWidth="79.0" style="-fx-background-color: ff8000;" text="Ajoute" textFill="WHITE">
+            <Button fx:id="btnAjout" layoutX="525.0" layoutY="247.0" mnemonicParsing="false" onAction="#AjoutProd" prefHeight="29.0" prefWidth="79.0" style="-fx-background-color: ff8000;" text="Ajoute" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
-            <TextField fx:id="inPrix" layoutX="491.0" layoutY="244.0" promptText="Prix" />
-            <TextField fx:id="inpNom" layoutX="491.0" layoutY="204.0" promptText="Nom" />
-            <Label layoutX="483.0" layoutY="74.0" text="Ajout de Produit">
+            <TextField fx:id="inPrix" layoutX="491.0" layoutY="204.0" promptText="Prix" />
+            <TextField fx:id="inpNom" layoutX="491.0" layoutY="167.0" promptText="Nom" />
+            <Label layoutX="483.0" layoutY="58.0" text="Ajout de Produit">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="typeServ" layoutX="490.0" layoutY="162.0" prefWidth="150.0" />
-            <Label layoutX="526.0" layoutY="137.0" text="Tye de porduit" />
-            <Pane layoutX="445.0" layoutY="53.0" prefHeight="301.0" prefWidth="3.0" style="-fx-background-color: f94e4e;" />
+            <ChoiceBox fx:id="typeServ" layoutX="490.0" layoutY="124.0" prefWidth="150.0" />
+            <Label layoutX="526.0" layoutY="98.0" text="Tye de porduit" />
+            <Pane layoutX="445.0" layoutY="53.0" prefHeight="345.0" prefWidth="6.0" style="-fx-background-color: f94e4e;" />
+            <Label layoutX="464.0" layoutY="304.0" text="Total :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="valTotal" layoutX="535.0" layoutY="304.0" prefHeight="27.0" prefWidth="92.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnFacturer" layoutX="530.0" layoutY="351.0" mnemonicParsing="false" onAction="#Facture" style="-fx-background-color: ff9000;" text="Facturé" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
          </children>
          <stylesheets>
             <URL value="@../../style/button.css" />

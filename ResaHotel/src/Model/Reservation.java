@@ -94,7 +94,7 @@ public class Reservation extends Observable {
 		return false;}
 	}
 
-
+// modfier type de date en sql
     public java.sql.Date getSQLdate(LocalDate e) {
     	java.util.Date deb = Date.from(e.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
     	return new java.sql.Date(deb.getTime());
@@ -170,14 +170,17 @@ public class Reservation extends Observable {
     }
 //methode mise a jour BD du statut de la reservation en valider
     
-    public void Confirme() throws SQLException {
+    public Service Confirme() throws SQLException {
+    	Service s = new Service(Chamb.get(0).getTotalprvt(),String.valueOf(this.idRes));
         // TODO implement here
+    	s.AjoutBD2(s.getType());
     	this.Statut = "Valider";
     	Connection conn1=Connexion.ConnexionBD();
 		PreparedStatement ps=(PreparedStatement) conn1.prepareStatement(
 				"UPDATE `Reservation` SET `Statut`= '"+this.Statut+"'WHERE `IdRes`='"+this.idRes+"'");
 		ps.executeUpdate();	
 		ps.close();
+		return s;
     }
 
 }

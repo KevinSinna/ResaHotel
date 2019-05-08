@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Fenetre {
     @FXML
@@ -45,11 +46,13 @@ public class Fenetre {
 
 	    	Stage stage;
 			Parent root;
+			
 			if(event.getSource()==btnAccueil){
 	    	    	stage=(Stage) btnAccueil.getScene().getWindow();
 	    	        root = FXMLLoader.load(getClass().getResource("/View/accueil.fxml"));
 	    	        Scene accueil = new Scene(root);
 	    	 	   stage.setScene(accueil);
+	    	 	  
 	    	 stage.show();
 	    	   }
 
@@ -58,6 +61,7 @@ public class Fenetre {
 	    	    root = FXMLLoader.load(getClass().getResource("/View/gestionchambre.fxml"));
 	    	    Scene gestionchambre = new Scene(root);
 	    		   stage.setScene(gestionchambre);
+	    		   
 	    	stage.show();
 	    	}
 	    	if(event.getSource()==btnGestres){
@@ -65,6 +69,7 @@ public class Fenetre {
 	    	    root = FXMLLoader.load(getClass().getResource("/View/gestionreservation.fxml"));
 	    	    Scene gestionres = new Scene(root);
 	    		   stage.setScene(gestionres);
+	    		   
 	    	stage.show();
 	    	}
 	    	if(event.getSource()==btnClient){
@@ -72,6 +77,7 @@ public class Fenetre {
 	    	    root = FXMLLoader.load(getClass().getResource("/View/client.fxml"));
 	    	    Scene client = new Scene(root);
 	    		   stage.setScene(client);
+	    		   
 	    	stage.show();
 	    	}
 	    	if(event.getSource()==btnFact){
@@ -79,6 +85,7 @@ public class Fenetre {
 	    	    root = FXMLLoader.load(getClass().getResource("/View/facturation.fxml"));
 	    	    Scene facture = new Scene(root);
 	    		   stage.setScene(facture);
+	    		  
 	    	stage.show();
 	    	}
 	    	}

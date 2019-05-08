@@ -33,6 +33,8 @@ import javafx.stage.StageStyle;
 import model.Chambre;
 import model.Client;
 import model.Reservation;
+import model.Sejour;
+import model.Service;
 
 public class PageReservation extends Fenetre implements Observer, Initializable {
 	Stage stage; 	
@@ -41,17 +43,17 @@ public class PageReservation extends Fenetre implements Observer, Initializable 
     @FXML
     private TableView<Reservation> tabReserv;
     @FXML
-    private TableColumn<?, ?> colRes;
+    private TableColumn<Reservation, Integer> colRes;
     @FXML
     private TableColumn<Reservation, Client> colClient;
     @FXML
     private TableColumn<Reservation, ArrayList<Chambre>> colNum;
     @FXML
-    private TableColumn<?, ?> colDebut;
+    private TableColumn<Reservation, LocalDate> colDebut;
     @FXML
-    private TableColumn<?, ?> colFin;
+    private TableColumn<Reservation, LocalDate> colFin;
     @FXML
-    private TableColumn<?, ?> colStatut;
+    private TableColumn<Reservation, String> colStatut;
     @FXML
     private TableColumn<Reservation, ArrayList<Chambre>> colTotal;
     @FXML
@@ -149,7 +151,10 @@ public class PageReservation extends Fenetre implements Observer, Initializable 
     		alert.showAndWait();
     		// verifier si elle est bien en attente
     	}else if((r.getStatut().equals(att))){
-    	r.Confirme();
+    	Service s = r.Confirme();
+    	Sejour sej = new Sejour(r);
+    	sej.AjoutProdList(s);
+    	sej.AjoutBD();
     	init();
     	}else {
     		Alert alert = new Alert(AlertType.INFORMATION);

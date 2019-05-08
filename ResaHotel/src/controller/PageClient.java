@@ -34,13 +34,13 @@ public class PageClient extends Fenetre implements Initializable, Observer {
 	private TableView<Client> TabViewClient;
 
 	@FXML
-	private TableColumn<?, ?> ColIdClient;
+	private TableColumn<Client, Integer> ColIdClient;
 
 	@FXML
-	private TableColumn<?, ?> ColNom;
+	private TableColumn<Client, String> ColNom;
 
 	@FXML
-	private TableColumn<?, ?> ColPrenom;	
+	private TableColumn<Client, String> ColPrenom;	
     
     @FXML
     private Button btnAjoute;

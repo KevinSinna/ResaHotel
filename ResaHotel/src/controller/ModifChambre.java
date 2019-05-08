@@ -86,6 +86,11 @@ public class ModifChambre implements Initializable {
     	} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Information");
+    		alert.setHeaderText("Information");
+    		alert.setContentText("Chambre existe deja");
+    		alert.showAndWait();
 		}
     		//fermeture de la fenetre
     		stage=(Stage) btnVMod.getScene().getWindow();   	
